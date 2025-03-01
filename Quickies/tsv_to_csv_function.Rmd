@@ -1,0 +1,70 @@
+---
+title: "tsv_to_csv_loop"
+author: "Bryant"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_knit $set(root.dir = "C:/Users/sbrya/Documents/random_data/wiley_txtb_data")
+```
+
+## How to convert deliminated files usinng R?
+
+I've got this folder of tab-separate files saved as .txt files. I want to upload them to MySQL Workbench using the Data Import Wizard, but the base version only accepts .csv and .json files.
+
+### Set the working directory.
+
+Set the working directory to whatever folder you intend to read in your files from, using `setwd()`.
+```{r setwd()}
+#setwd("C:/Users/sbrya/Documents/random_data/wiley_txtb_data")
+```
+
+### Unpack tidyverse.
+
+This method uses the `readr` and `stringr` libraries from the `tidyverse` package. You can do it without `tidyverse`, but these packages allow our code to be just a little bit neater.
+```{r tidyverse, warning=FALSE}
+library(tidyverse)
+```
+
+### readr
+
+`readr` enables us to use `read_csv`, `read_tsv`, `read_delim`, and other file-reading functions. We'll need to use `read_tsv`, specifically.
+```{r read_tsv, eval=TRUE}
+df_calendar <- read_tsv("calendar.txt")
+```
+
+It also allows us to save data in a similar manner using functions like `write_csv`.
+```{r write_tsv, eval=FALSE}
+write_csv(df_calendar, "calendar.csv")
+```
+
+We could just repeat these same two functions while changing out the file names by hand, but this obviously gets messy and tedious if you have to convert a larger number of files at a time:
+```{r messy_code, eval=FALSE}
+write_csv(read_tsv("calendar.txt"), "calendar.csv")
+write_csv(read_tsv("campaigns.txt"), "campaigns.csv")
+write_csv(read_tsv("customers.txt"), "customers.csv")
+write_csv(read_tsv("orderlines.txt"), "orderlines.csv")
+write_csv(read_tsv("orders.txt"), "orders.csv")
+write_csv(read_tsv("products.txt"), "products.csv")
+write_csv(read_tsv("Subscribers.txt"), "Subscribers.csv")
+write_csv(read_tsv("ZipCensus.txt"), "ZipCensus.csv")
+write_csv(read_tsv("ZipCensus_ss.txt"), "ZipCensus_ss.csv")
+write_csv(read_tsv("zipcounty.txt"), "zipcounty.csv")
+```
+In the name of efficiency, we can wrap the process into a for loop.
+
+### For Loop
+
+We first need to save a list of all files in the working directory we intend to convert. In this case, it's every .txt file in our current directory,
+```{r}
+listtxt <- dir(pattern = "*.txt") # creates the list of all the csv files in the directory
+```
+
+Next we write our loop. The way it works, is for each iteration `i` of an object in our directory `listtxt`, the `for()` loop reads the tab-separated .txt file and then exports it as a .csv file.
+```{r For_loop, eval=FALSE}
+for (i in 1:length(listtxt)){
+  write_csv(read_tsv(listtxt[i]), str_replace(listtxt[i], ".txt", ".csv"))
+}
+```
