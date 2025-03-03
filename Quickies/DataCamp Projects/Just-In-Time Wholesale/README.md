@@ -1,4 +1,7 @@
 # Just-In-Time Wholesale
+
+[You can view the finalized Tableau dashboard on my online portfolio here.]()
+
 ## Supply Chain and Inventory Management
 Case study using the "Just In Time" Wholesale supply chain dataset from Datacamp.
 
