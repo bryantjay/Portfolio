@@ -1,6 +1,6 @@
 # Databel Customer Churn
 
-[You can view the finalized Tableau dashboard on my online portfolio here.]()
+[You can view the finalized Tableau dashboard on my online portfolio here.](https://public.tableau.com/views/Databel_16897084715390/DatabelCustomerChurn?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link)
 
 Case study using the Databel churn dataset from Datacamp.
 
