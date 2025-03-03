@@ -1,3 +1,7 @@
+# Datasearch
+
+[You can view the finalized Tableau dashboard on my online portfolio here.]()
+
 Case study using the Datasearch job market dataset from Datacamp.
 
 DataSearch LLC is a recruiting firm specializing in hiring within the data science industry. The task is to develop a dashboard for company recruiters to navigate trends in job postings, pay, experience, and more.
