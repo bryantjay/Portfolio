@@ -1,5 +1,7 @@
 # Analyzing One Piece Episodes Over Time
 
+https://www.kaggle.com/code/bryantjay/one-piece-plotly-analysis
+
 ![alt](https://github.com/bryantjay/Portfolio/blob/main/One%20Piece%20Plotly%20Analysis/visualizations/op_ratings_boxplot_by_func.png?raw=true)
 
 ![alt](https://github.com/bryantjay/Portfolio/blob/main/One%20Piece%20Plotly%20Analysis/visualizations/op_ratings_histogram.png?raw=true)
