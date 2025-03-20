@@ -1,6 +1,6 @@
-# "Final Project: Predicting Online Shopper's Intention"
-Bryant Jay
-Summer 2022
+# Final Project: Predicting Online Shopper's Intention
+#### Bryant Jay
+#### Summer 2022
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
