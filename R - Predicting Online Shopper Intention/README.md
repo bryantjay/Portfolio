@@ -825,3 +825,4 @@ The Bagged model seems to have some good prediction metrics at first, but after 
 
 One drawback with the Random Forest model is it's black-box nature, of course. As a less interpretable model it can be hard to discern why certain prediction-making decisions are made. Luckily, this is a low-stakes online marketing scenario, predominantly used for projecting budgets or trying to find prospective market clusters. These aren't decisions which could drastically influence or affect people's lives, like a loan-approval scenario or a scenario identifying life-threatening diseases. A less-interpretable method is usually suitable here. If a more transparent method were needed for some reason, the basic Decision Tree model that we created is very easy to interpret; this could be provided as a potential alternative.
 
+![ALT](https://github.com/bryantjay/Portfolio/blob/main/R%20-%20Predicting%20Online%20Shopper%20Intention/source_files/images/imgA1.png?raw=true)
