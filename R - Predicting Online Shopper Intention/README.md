@@ -45,6 +45,7 @@ url = "https://raw.githubusercontent.com/bryantjay/Portfolio/refs/heads/main/R%2
 # Data read directly from raw CSV file
 osi <- read_csv(url)
 ```
+![imgA1](https://github.com/bryantjay/Portfolio/blob/main/R%20-%20Predicting%20Online%20Shopper%20Intention/source_files/images/imgA1.png?raw=true)
 
 Our download message indicates some basic metadata: - 12330 instances - 18 columns, including: - 2 character fields - 2 binary data fields - 14 numeric fields
 
@@ -55,6 +56,7 @@ Now that the data is imported into R, we can have a closer look.
 ```{r first_look}
 osi %>% head()
 ```
+![imgA2](https://github.com/bryantjay/Portfolio/blob/main/R%20-%20Predicting%20Online%20Shopper%20Intention/source_files/images/imgA2.png?raw=true)
 
 The first six fields represent page metrics of the online sessions by consumers. There are three categories for website pages: "Administrative", "Informational", and "Product-Related". Each observation of the data records the number of pages the user visited of [page category], and the amount of time they spent in that category of pages [page category]`Related`. The former grouping are integer values, while the latter are continuous values of some standard time unit (I believe in seconds, but it is not clarified).
 
@@ -106,6 +108,7 @@ osi %>%
   sum() %>% 
   print()
 ```
+![imgA3](https://github.com/bryantjay/Portfolio/blob/main/R%20-%20Predicting%20Online%20Shopper%20Intention/source_files/images/imgA3.png?raw=true)
 
 ### Duplicates
 
@@ -115,6 +118,7 @@ There are no missing values in the data set, but there are some rows with duplic
 # Displays all instances of duplicated rows
 osi[duplicated(osi), ]
 ```
+![imgA4](https://github.com/bryantjay/Portfolio/blob/main/R%20-%20Predicting%20Online%20Shopper%20Intention/source_files/images/imgA4.png?raw=true)
 
 There's no ID column which exists to test for an exact duplication of instances. Some rows are duplicated, but closer inspection indicates that they all share near-zero metrics. These instances probably represent users who instantly bounced from the website upon entering a session.
 
@@ -127,7 +131,10 @@ The month column only contains 10 possible values, as there are no data instance
 ```{r data_consitency}
 # All levels of Month are 3-letter months except June.
 unique(osi$Month)
+```
+![imgA5](https://github.com/bryantjay/Portfolio/blob/main/R%20-%20Predicting%20Online%20Shopper%20Intention/source_files/images/imgA5.png?raw=true)
 
+```
 # Fix 'June' spelling to be consistent
 osi$Month[osi$Month == "June"] <- "Jun"
 
@@ -152,8 +159,12 @@ osi <- osi %>%
          VisitorType = factor(VisitorType))
 
 osi %>% summary()
+```
+![imgA6](https://github.com/bryantjay/Portfolio/blob/main/R%20-%20Predicting%20Online%20Shopper%20Intention/source_files/images/imgA6.png?raw=true)
+```
 osi %>% glimpse()
 ```
+![imgA7](https://github.com/bryantjay/Portfolio/blob/main/R%20-%20Predicting%20Online%20Shopper%20Intention/source_files/images/imgA7.png?raw=true)
 
 ## Exploratory Data Analysis (EDA)
 
@@ -188,6 +199,7 @@ grid.arrange(grobs = pmap(list(y_val = c("Administrative", "Administrative_Durat
                           plot_violin),
              nrow = 3, ncol = 2)
 ```
+![imgB1](https://github.com/bryantjay/Portfolio/blob/main/R%20-%20Predicting%20Online%20Shopper%20Intention/source_files/images/imgB1.png?raw=true)
 
 The details of this are easy to gloss over, but it can be noticed that the sessions resulting in a purchase (i.e. `Revenue == TRUE`) typically include a slightly higher page counts and page durations.
 
@@ -218,6 +230,7 @@ grid.arrange(grobs = pmap(
   nrow = 3, ncol = 1)
 
 ```
+![imgB2](https://github.com/bryantjay/Portfolio/blob/main/R%20-%20Predicting%20Online%20Shopper%20Intention/source_files/images/imgB2.png?raw=true)
 
 There's a ton of overlap between the Revenue classes for bounce rates and exit rates, with the bulk of converted sessions seeming to have marginally lower rates in both instances.
 
@@ -260,6 +273,7 @@ grid.arrange(grobs = pmap(
   plot_bar),
   nrow = 3, ncol = 3)
 ```
+![imgB4](https://github.com/bryantjay/Portfolio/blob/main/R%20-%20Predicting%20Online%20Shopper%20Intention/source_files/images/imgB4.png?raw=true)
 
 This presents a rough impression of what kinds of details pertain to a variety of users across many different sessions. This will be one of the first times that we notice a major data constraint of this dataset: there is not a whole lot of context. Most of the categorical values are replaced by integer representations, and not accompanying key is given to interpret what these integer codes might represent. For the most part, we will have to infer without specific context, which will hinder our ability to engineer useful features later on.
 
@@ -297,6 +311,7 @@ grid.arrange(grobs = pmap(
   plot_stack),
   nrow = 3, ncol = 3)
 ```
+![imgB5](https://github.com/bryantjay/Portfolio/blob/main/R%20-%20Predicting%20Online%20Shopper%20Intention/source_files/images/imgB5.png?raw=true)
 
 We can see a fairly consistent distribution of purchases-to-nonpurchases across values within most given categories. There are some short spikes in these ratios in variables such as "Browser" and "TrafficType", but these pertain to low-count category values; as such, these spike trends are pretty difficult to rely on. One exception is the month category value of November, which is a common session attribute and also has a higher chance of a purchase relative to other months.
 
@@ -318,6 +333,7 @@ osi <- osi %>%
 
 str(osi)
 ```
+![imgC1](https://github.com/bryantjay/Portfolio/blob/main/R%20-%20Predicting%20Online%20Shopper%20Intention/source_files/images/imgC1.png?raw=true)
 
 ### Feature Engineering
 
@@ -338,6 +354,7 @@ osi$LastMinShopper = ifelse(osi$VisitorType == "Returning_Visitor" & osi$Special
 # Two-sided t-test of new "Holiday Season" feature
 t.test(osi$Revenue ~ osi$HolidaySeason, alternative = "two.sided")
 ```
+![imgC2](https://github.com/bryantjay/Portfolio/blob/main/R%20-%20Predicting%20Online%20Shopper%20Intention/source_files/images/imgC2.png?raw=true)
 
 ### One Hot Encoding
 
@@ -354,6 +371,7 @@ osi$Revenue <- as.factor(osi$Revenue)
 
 str(osi)
 ```
+![imgC3](https://github.com/bryantjay/Portfolio/blob/main/R%20-%20Predicting%20Online%20Shopper%20Intention/source_files/images/imgC3.png?raw=true)
 
 ### Data Split
 
@@ -369,12 +387,20 @@ test_osi <- osi[-input_osi,]
 
 # Check the lengths of each
 dim(train_osi)
+```
+![imgC4](https://github.com/bryantjay/Portfolio/blob/main/R%20-%20Predicting%20Online%20Shopper%20Intention/source_files/images/imgC4.png?raw=true)
+```
 dim(test_osi)
-
-# 
+```
+![imgC5](https://github.com/bryantjay/Portfolio/blob/main/R%20-%20Predicting%20Online%20Shopper%20Intention/source_files/images/imgC5.png?raw=true)
+```
 table(train_osi$Revenue) %>% prop.table()
+```
+![imgC6](https://github.com/bryantjay/Portfolio/blob/main/R%20-%20Predicting%20Online%20Shopper%20Intention/source_files/images/imgC6.png?raw=true)
+```
 table(test_osi$Revenue) %>% prop.table()
 ```
+![imgC7](https://github.com/bryantjay/Portfolio/blob/main/R%20-%20Predicting%20Online%20Shopper%20Intention/source_files/images/imgC7.png?raw=true)
 
 ### Center and Scale
 
@@ -392,6 +418,8 @@ test_proc <- predict(preproc_steps, newdata = test_osi)
 train_proc %>% head()
 test_proc %>% head()
 ```
+![imgD1](https://github.com/bryantjay/Portfolio/blob/main/R%20-%20Predicting%20Online%20Shopper%20Intention/source_files/images/imgD1.png?raw=true)
+![imgD2](https://github.com/bryantjay/Portfolio/blob/main/R%20-%20Predicting%20Online%20Shopper%20Intention/source_files/images/imgD2.png?raw=true)
 
 ## Model Development
 
@@ -412,6 +440,7 @@ logistic_model_full = train(Revenue ~ ., data = train_proc, method = "glm", fami
 # Summary of the logistic regression model
 summary(logistic_model_full)
 ```
+![imgE1](https://github.com/bryantjay/Portfolio/blob/main/R%20-%20Predicting%20Online%20Shopper%20Intention/source_files/images/imgE1.png?raw=true)
 
 The model summary gives us some initial insight into which feature variables are most useful in generating reliable predictions.
 
@@ -494,6 +523,8 @@ tree_predictions_full = predict(tree_model_full, newdata = test_proc)
 # Summary of the decision tree model
 rpart_cm_full <- confusionMatrix(tree_predictions_full, test_osi$Revenue)
 ```
+![imgF1](https://github.com/bryantjay/Portfolio/blob/main/R%20-%20Predicting%20Online%20Shopper%20Intention/source_files/images/imgF1.png?raw=true)
+![imgF2](https://github.com/bryantjay/Portfolio/blob/main/R%20-%20Predicting%20Online%20Shopper%20Intention/source_files/images/imgF2.png?raw=true)
 
 *Potential importance*: PageValues, ProductRelated_Duration, ProductRelated, ExitRates, VisitorType_Returning_Visitor, LastMinShopper
 
@@ -514,6 +545,7 @@ bagged_predictions_full = predict(bagged_model_full, newdata = test_proc)
 # Summary of the bagged decision tree model
 bagged_cm_full <- confusionMatrix(bagged_predictions_full, test_osi$Revenue)
 ```
+![imgG1](https://github.com/bryantjay/Portfolio/blob/main/R%20-%20Predicting%20Online%20Shopper%20Intention/source_files/images/imgG1.png?raw=true)
 
 *Potential importance*: PageValues, ProductRelated_Duration, ProductRelated, ExitRates, Administrative_Duration, BounceRates, Administrative, Informational_Duration, Informational
 
@@ -564,6 +596,7 @@ logistic_predictions = predict(logistic_model, newdata = test_proc)
 logistic_cm <- confusionMatrix(logistic_predictions, test_proc$Revenue)
 logistic_cm
 ```
+![imgH1](https://github.com/bryantjay/Portfolio/blob/main/R%20-%20Predicting%20Online%20Shopper%20Intention/source_files/images/imgH1.png?raw=true)
 
 ### Stepwise Regression
 
@@ -598,6 +631,9 @@ tree_predictions = predict(tree_model, newdata = test_proc)
 rpart_cm <- confusionMatrix(tree_predictions, test_osi$Revenue)
 rpart_cm
 ```
+![imgI1](https://github.com/bryantjay/Portfolio/blob/main/R%20-%20Predicting%20Online%20Shopper%20Intention/source_files/images/imgI1.png?raw=true)
+![imgI2](https://github.com/bryantjay/Portfolio/blob/main/R%20-%20Predicting%20Online%20Shopper%20Intention/source_files/images/imgI2.png?raw=true)
+![imgI3](https://github.com/bryantjay/Portfolio/blob/main/R%20-%20Predicting%20Online%20Shopper%20Intention/source_files/images/imgI3.png?raw=true)
 
 ### Bagged Model
 
@@ -613,6 +649,8 @@ bagged_predictions = predict(bagged_model, newdata = test_proc)
 bagged_cm <- confusionMatrix(bagged_predictions, test_osi$Revenue)
 bagged_cm
 ```
+![imgJ1](https://github.com/bryantjay/Portfolio/blob/main/R%20-%20Predicting%20Online%20Shopper%20Intention/source_files/images/imgJ1.png?raw=true)
+![imgJ2](https://github.com/bryantjay/Portfolio/blob/main/R%20-%20Predicting%20Online%20Shopper%20Intention/source_files/images/imgJ2.png?raw=true)
 
 ### Random Forest Model
 
@@ -634,6 +672,10 @@ rf_predictions = predict(rf_model, newdata = test_proc)
 rf_cm <- confusionMatrix(rf_predictions, test_osi$Revenue)
 rf_cm
 ```
+![imgK1](https://github.com/bryantjay/Portfolio/blob/main/R%20-%20Predicting%20Online%20Shopper%20Intention/source_files/images/imgK1.png?raw=true)
+![imgK2](https://github.com/bryantjay/Portfolio/blob/main/R%20-%20Predicting%20Online%20Shopper%20Intention/source_files/images/imgK2.png?raw=true)
+![imgK3](https://github.com/bryantjay/Portfolio/blob/main/R%20-%20Predicting%20Online%20Shopper%20Intention/source_files/images/imgK3.png?raw=true)
+![imgK4](https://github.com/bryantjay/Portfolio/blob/main/R%20-%20Predicting%20Online%20Shopper%20Intention/source_files/images/imgK4.png?raw=true)
 
 ## Model Performance
 
@@ -677,6 +719,7 @@ accuracy_matrix <- data.frame(
 # Viewing the results
 print(accuracy_matrix)
 ```
+![imgL1](https://github.com/bryantjay/Portfolio/blob/main/R%20-%20Predicting%20Online%20Shopper%20Intention/source_files/images/imgL1.png?raw=true)
 
 Luckily, all of our models performed better than the "all-FALSE" method, so we know they're doing something right. Some models slightly improved after pruning predictors, and some worsened. Noticeably, our logistic and stepwise models now have the same accuracy statistic, because they both concluded on the same final model formula; this will carry on over the following metrics as well. The only model to show strong(-ish) improvements after pruning was the bagged tree model, and the new random forest model outperformed all others.
 
@@ -709,6 +752,7 @@ specificity_matrix <- data.frame(
 # Viewing the results
 print(specificity_matrix)
 ```
+![imgL2](https://github.com/bryantjay/Portfolio/blob/main/R%20-%20Predicting%20Online%20Shopper%20Intention/source_files/images/imgL2.png?raw=true)
 
 Specificity is a good metric to consider alongside others, but it is not the "best" metric by itself For reference, an "all-FALSE" model would be graded as 1.0 here. This is simply the success ratio at identifying actual negative outcomes, regardless of accuracy or precision. A lot of times, what this means in the context of a FALSE-heavy set of outcomes, is that the model is taking fewer risks in identifying potential TRUE values.
 
@@ -745,6 +789,7 @@ sensitivity_matrix <- data.frame(
 # Viewing the results
 print(sensitivity_matrix)
 ```
+![imgL3](https://github.com/bryantjay/Portfolio/blob/main/R%20-%20Predicting%20Online%20Shopper%20Intention/source_files/images/imgL3.png?raw=true)
 
 Sensitivity is the opposite to specificity, and like specificity, sensitivity should not be considered in isolation. For reference, an "all-FALSE" model would be graded as a big, fat zero here; no TRUE outcomes were correctly predicted. If we thought about specificity as an indicator for a model's ability to take risk, sensitivity can sometimes indicate whether the model is taking *too much* risk.
 
@@ -779,6 +824,7 @@ precision_matrix <- data.frame(
 # Viewing the results
 print(precision_matrix)
 ```
+![imgL4](https://github.com/bryantjay/Portfolio/blob/main/R%20-%20Predicting%20Online%20Shopper%20Intention/source_files/images/imgL4.png?raw=true)
 
 There is a slight decline in precision between the full and pruned states of all models (not including the Random Forest model, of course, which had no full counterpart). It should be noted that this decline is very minimal, and also isn't *necessarily* a negative.
 
@@ -814,6 +860,7 @@ f1_score_matrix <- data.frame(
 print(f1_score_matrix)
 
 ```
+![imgL5](https://github.com/bryantjay/Portfolio/blob/main/R%20-%20Predicting%20Online%20Shopper%20Intention/source_files/images/imgL5.png?raw=true)
 
 The F1 scores are relatively consistent across all models: usually between 93.5% and 94.5% There is a slight improvement in Logistic model performance, while all other revised models face declines. These decreases are only marginal in the Stepwise and Decision Tree models, but more significant in the Bagged tree model. The Random Forest F1 score outperforms other models.
 
@@ -825,4 +872,5 @@ The Bagged model seems to have some good prediction metrics at first, but after 
 
 One drawback with the Random Forest model is it's black-box nature, of course. As a less interpretable model it can be hard to discern why certain prediction-making decisions are made. Luckily, this is a low-stakes online marketing scenario, predominantly used for projecting budgets or trying to find prospective market clusters. These aren't decisions which could drastically influence or affect people's lives, like a loan-approval scenario or a scenario identifying life-threatening diseases. A less-interpretable method is usually suitable here. If a more transparent method were needed for some reason, the basic Decision Tree model that we created is very easy to interpret; this could be provided as a potential alternative.
 
-![ALT](https://github.com/bryantjay/Portfolio/blob/main/R%20-%20Predicting%20Online%20Shopper%20Intention/source_files/images/imgA1.png?raw=true)
+
+
