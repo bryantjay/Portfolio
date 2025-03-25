@@ -27,6 +27,40 @@ print(wages.head(10), "\n")
 print(wages.info(), "\n")
 print(wages.describe(include='all'))
 ```
+|    | employee_id   | department                     | job_title                |   hourly_rate |
+|---:|:--------------|:-------------------------------|:-------------------------|--------------:|
+|  0 | E00001        | Office of Economic Development | StratAdvsr2,Exempt       |        71.32  |
+|  1 | E00002        | Office of Economic Development | Admin Staff Asst *       |        38.46  |
+|  2 | E00003        | Education & Early Learning     | StratAdvsr1,Exempt       |        60.646 |
+|  3 | E00004        | Education & Early Learning     | Admin Staff Asst         |        44.83  |
+|  4 | E00005        | Education & Early Learning     | Grants&Contracts Spec,Sr |        43.1   |
+|  5 | E00006        | Education & Early Learning     | Early Ed Spec,Sr BU      |        52.2   |
+|  6 | E00007        | Police Relief & Pension Fund   | Contract Employee *      |        94.473 |
+|  7 | E00008        | Parks & Recreation             | Sfty&Hlth Spec,Sr        |        53.82  |
+|  8 | E00009        | Parks & Recreation             | High School Intern *     |        19.97  |
+|  9 | E00010        | Parks & Recreation             | High School Intern *     |        19.97  |
+
+| #   | Column       | Non-Null Count | Dtype   |
+|-----|--------------|----------------|---------|
+| 0   | employee_id  | 13149 non-null | object  |
+| 1   | department   | 13149 non-null | object  |
+| 2   | job_title    | 13149 non-null | object  |
+| 3   | hourly_rate  | 13149 non-null | float64 |
+
+|        | employee_id   | department         | job_title   |   hourly_rate |
+|:-------|:--------------|:-------------------|:------------|--------------:|
+| count  | 13149         | 13149              | 13149       |    13149      |
+| unique | 13149         | 40                 | 1157        |      nan      |
+| top    | E00001        | Parks & Recreation | Lifeguard * |      nan      |
+| freq   | 1             | 2029               | 401         |      nan      |
+| mean   | nan           | nan                | nan         |       52.5853 |
+| std    | nan           | nan                | nan         |       18.8665 |
+| min    | nan           | nan                | nan         |        5.53   |
+| 25%    | nan           | nan                | nan         |       38.46   |
+| 50%    | nan           | nan                | nan         |       51.22   |
+| 75%    | nan           | nan                | nan         |       64.68   |
+| max    | nan           | nan                | nan         |      236.484  |
+
 
 ## Early Exploration
 
@@ -57,6 +91,7 @@ departments['pct_mean_med_diff'] = round((departments.mean_hourly_rate - departm
 departments['hourly_dept_exp'] = departments.num_employees * departments.median_hourly_rate
 ```
 Number of City Departments: 40
+
 Total Number of Positions: 1157
 
 ### Here's the data we're looking at:
@@ -171,6 +206,22 @@ plt.show()
 
 print(departments[departments['num_employees'] > 400]['department'])
 ```
+![fig1](https://github.com/bryantjay/Portfolio/blob/main/Quickies/Seattle%20Labor%20Spending%20by%20Department/plots/fig1.png?raw=true)
+
+|    | department                     |
+|---:|:-------------------------------|
+|  7 | Construction & Inspections     |
+| 12 | Finance & Admin Services       |
+| 13 | Fire Department                |
+| 15 | Human Services Department      |
+| 17 | Information Technology         |
+| 29 | Parks & Recreation             |
+| 31 | Police Department              |
+| 33 | Seattle Center                 |
+| 34 | Seattle City Light             |
+| 36 | Seattle Dept of Transportation |
+| 37 | Seattle Public Library         |
+| 38 | Seattle Public Utilities       |
 
 We're going to focus on these larger departments and take a look at their spending statistics. More specifically, I'd like to take a look at Police Department expenditures and compare them to the labor expenses of other large city departments.
 
@@ -243,6 +294,7 @@ plt.title('Median Wages for Large Departments', fontsize=14, pad=25)
 plt.tight_layout()
 plt.show()
 ```
+![fig2](https://github.com/bryantjay/Portfolio/blob/main/Quickies/Seattle%20Labor%20Spending%20by%20Department/plots/fig2.png?raw=true)
 
 ### Hourly Labor Expenditures
 
@@ -292,6 +344,7 @@ plt.title('Hourly Labor Expenditures for Large Departments', fontsize=16, pad=25
 plt.tight_layout()
 plt.show()
 ```
+![fig3](https://github.com/bryantjay/Portfolio/blob/main/Quickies/Seattle%20Labor%20Spending%20by%20Department/plots/fig3.png?raw=true)
 
 Again, the police department sits near the top of this list, outperformed only by SCL (Seattle's municipal power organization). We can also notice that, even though the Parks & Rec department has the lowest median wage of any of the departments, it ranks #4 in terms of overall spending due to the extremely high number of people it employs.
 
@@ -394,5 +447,6 @@ plt.title('Size-Pay Comparison for Large Departments', fontsize=20, pad=25)
 # Show figure
 plt.show()
 ```
+![fig4](https://github.com/bryantjay/Portfolio/blob/main/Quickies/Seattle%20Labor%20Spending%20by%20Department/plots/fig4.png?raw=true)
 
 In conclusion, this exploration of Seattle's public sector wage data provides valuable insights into the city's labor distribution and budget allocations across various departments. By examining factors such as median wages, department size, and hourly labor expenditures, we've been able to identify patterns and disparities, particularly within large departments like the Police Department and Parks & Recreation. These insights highlight the complexities of budgeting for public services, especially in departments with high staffing levels or specialized roles. Moving forward, this analysis can serve as a foundation for deeper investigations into the efficiency and effectiveness of city spending, providing opportunities for informed decision-making in future budget planning and policy discussions.
