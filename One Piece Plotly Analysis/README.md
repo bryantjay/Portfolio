@@ -1,10 +1,10 @@
 # Exploring Episodes in *One Piece*
 
-![One Piece Vol. 1 manga cover](https://b1328696.smushcdn.com/1328696/wp-content/uploads/2020/04/01-61.jpg?lossy=1&strip=1&webp=1)
-
 ## Introduction
 
 Eiichiro Oda's *One Piece* is one of the most iconic and successful media franchises to come out of Japan. The story follows Monkey D. Luffy, a young pirate with rubber abilities, who sets out on a journey to find the legendary treasure "One Piece" and to become the King of the Pirates. This simple premise has kept fans of the series hooked and eagerly awaiting a conclusion for nearly three decades.
+
+![One Piece Vol. 1 and Vol.61 manga covers](https://b1328696.smushcdn.com/1328696/wp-content/uploads/2020/04/01-61.jpg?lossy=1&strip=1&webp=1)
 
 First published as a manga in *Weekly Shonen Jump* in 1997, it has captivated readers worldwide with its rich storytelling and colorful characters. Toei Animation's anime adaptation began airing in 1999, bringing the epic odyssey to television screens across Japan. Over time, "One Piece" has become a global sensation. An early English dub was handled by 4Kids Entertainment during the mid-00s, but this version faced criticism for heavy censorship and narrative re-writes. Funimation acquired the English localization rights in 2007, and began producing a more faithful English version; this is the version that would go on to air on Toonami, Crunchyroll, and Netflix for most of series's history.
 
