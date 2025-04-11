@@ -1,5 +1,6 @@
 # Exploring Episodes in *One Piece*
-![One Piece Vol. 1 manga cover](https://static.wikia.nocookie.net/enmanga/images/0/0b/One_Piece_Vol_1.jpg/revision/latest?cb=20210928031736)
+
+![One Piece Vol. 1 manga cover](https://b1328696.smushcdn.com/1328696/wp-content/uploads/2020/04/01-61.jpg?lossy=1&strip=1&webp=1)
 
 ## Introduction
 
