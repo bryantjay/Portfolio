@@ -6,7 +6,7 @@ UW Data Analytics - Summer 2022
 
 ## Problem
 
-Inveon tracks visitor sessions and provides consultancy based on their analysis of a business' website. The firm would like to know what features belong to customers who result in a sale for their clients. We are interested in finding out how much time these people spend on the site, when they browse and buy, where they're located, and what technologies they use to explore a company's online store. We want to see the common themes/characteristic of those household, look at the factors that affect income level the most, and put resources into areas that can help increase their income level.
+Inveon tracks visitor sessions and provides consultancy based on their analysis of a business's website. The firm would like to know what characteristics pertain to the browser sessions which result in a sale for their clients. We are interested in finding out how much time users spend on the site, when they browse and buy, where they're located, and what technologies they use to explore a company's online store.
 
 What are the strongest predictors of shopper intent for online visitors to a business' website? How can we use this information to target which aspect of our website fulfills conversion in a customer's journey?
 
@@ -34,7 +34,7 @@ library(tidyverse)
 
 The dataset for this analysis was initially obtained as the ["Online Shopper Purchasing Intent Dataset"](https://archive.ics.uci.edu/dataset/468/online+shoppers+purchasing+intention+dataset) from the [UCI machine learning repository](https://archive.ics.uci.edu/).
 
-The data was jointly collected and donated in 2018 by Inveon and the Department of Computer Engineering, in the College of Engineering and Natural Sciences, at Bahcesehir University. The dataset was formed so that each session would belong to a different user in a 1-year period to avoid any tendency to a specific campaign, special day, user profile, or period.
+The data was jointly collected and donated in 2018 by Inveon and the Department of Computer Engineering at Bahcesehir University. The dataset was formed so that each session would belong to a different user in a 1-year period to avoid any tendency to a specific campaign, special day, user profile, or period.
 
 For reproducibility and cleaner code, I'm going to read the data in CSV format from a file source I'm hosting on my GitHub page for this project:
 
@@ -47,7 +47,17 @@ osi <- read_csv(url)
 ```
 ![imgA1](https://github.com/bryantjay/Portfolio/blob/main/R%20-%20Predicting%20Online%20Shopper%20Intention/source_files/images/imgA1.png?raw=true)
 
-Our download message indicates some basic metadata: - 12330 instances - 18 columns, including: - 2 character fields - 2 binary data fields - 14 numeric fields
+Our download message indicates some basic metadata:
+
+-   12330 instances
+
+-   18 columns, including:
+
+    -   2 character fields
+
+    -   2 binary data fields
+
+    -   14 numeric fields
 
 ### First Look
 
@@ -58,7 +68,7 @@ osi %>% head()
 ```
 ![imgA2](https://github.com/bryantjay/Portfolio/blob/main/R%20-%20Predicting%20Online%20Shopper%20Intention/source_files/images/imgA2.png?raw=true)
 
-The first six fields represent page metrics of the online sessions by consumers. There are three categories for website pages: "Administrative", "Informational", and "Product-Related". Each observation of the data records the number of pages the user visited of [page category], and the amount of time they spent in that category of pages [page category]`Related`. The former grouping are integer values, while the latter are continuous values of some standard time unit (I believe in seconds, but it is not clarified).
+The first six fields represent page metrics of the online sessions by consumers. There are three categories for website pages: "Administrative", "Informational", and "Product-Related". Each observation of the data records the number of pages the user visited of [page category], and the amount of time they spent in that category of pages [page category]`_Duration`. The former grouping are integer values, while the latter are continuous values of some standard time unit (I believe in seconds, but it is not clarified).
 
 -   "Administrative": Number of administrative pages visited during visitor's session.
 
@@ -234,13 +244,13 @@ grid.arrange(grobs = pmap(
 
 There's a ton of overlap between the Revenue classes for bounce rates and exit rates, with the bulk of converted sessions seeming to have marginally lower rates in both instances.
 
-Page Values between converted and non-converted visitors seems more differentiated. Page values for many non-converted visitors sits at or close to zero, while those of coverted visitors is higher.
+Page Values between converted and non-converted visitors seems more differentiated. Page values for many non-converted visitors sits at or close to zero, while those of converted visitors is higher.
 
 ### Pair Plot
 
 Before moving on to categoricals, let's first analyze any correlation between our numeric features using a pair plot. This will aid in our feature pruning later on.
 
-```{r pair_plot, eval = FALSE}
+```{r pair_plot}
 # Pair plot of numeric features
 ggpairs(select(osi, Administrative, Administrative_Duration, Informational,
                Informational_Duration, ProductRelated, ProductRelated_Duration,
@@ -275,21 +285,21 @@ grid.arrange(grobs = pmap(
 ```
 ![imgB4](https://github.com/bryantjay/Portfolio/blob/main/R%20-%20Predicting%20Online%20Shopper%20Intention/source_files/images/imgB4.png?raw=true)
 
-This presents a rough impression of what kinds of details pertain to a variety of users across many different sessions. This will be one of the first times that we notice a major data constraint of this dataset: there is not a whole lot of context. Most of the categorical values are replaced by integer representations, and not accompanying key is given to interpret what these integer codes might represent. For the most part, we will have to infer without specific context, which will hinder our ability to engineer useful features later on.
+This presents a rough impression of what kinds of details pertain to a variety of users across many different sessions. This will be one of the first times that we notice a major data constraint of this dataset: there is not a whole lot of context. Most of the categorical values are replaced by integer representations, and no accompanying key is given to interpret what these integer codes might represent. For the most part, we will have to infer without specific context, which will hinder our ability to engineer useful features later on.
 
 The majority of sessions do not occur near any sort of special holiday; this skewed distribution may indicate that the sensitivity of this feature only measures the temporal distance within a week or so of all holidays, and that most days of the year are "0".
 
-There are instances of sessions from every month except January and April, with a must larger chunk of session instances occurring in March, May, November, and December. This seems to indicate some seasonality in site activity, like that of a Spirit Halloween. Because the business is Turkish, it could be that activity in the months of May and March may spike due to proximity to Ramadan or Eid, with additional spikes in November and December due to the seasonality of Western holiday markets (perhaps the company deals in exports, too). It's hard to say definitively without further context.
+There are instances of sessions from every month except January and April, with a much larger chunk of session instances occurring in March, May, November, and December. This seems to indicate some seasonality in site activity, like that of a Spirit Halloween. Because the business is Turkish, it could be that activity in the months of May and March may spike due to proximity to Ramadan or Eid, with additional spikes in November and December due to the seasonality of Western holiday markets (perhaps the company deals in exports, too). It's hard to say definitively without further context.
 
 Most users seem to use Operating Systems "1", "2", and "3", and Browsers "1" and "2". Users by region is more evenly distributed, but still have higher clusters in Regions "1" and "3". It is not clear whether these regions represent global regions, national states/provinces, or even markets within a city.
 
-"Traffic Type" as variable is not clear on its definition. This maay represent avenues by which a user reached or were referenced to the website (i.e. ad-click, search engine, direct URL, etc.). There are many possible values, but most sessions pertain to Traffic Types "1", "2", "3", "4", and "13".
+"Traffic Type" as a variable is not clear on its definition. This may represent avenues by which a user reached or were referenced to the website (i.e. ad-click, search engine, direct URL, etc.). There are many possible values, but most sessions pertain to Traffic Types "1", "2", "3", "4", and "13".
 
-There are many more returning visitors to the site than new visitors. "Other" visitor type might represent some type of site administrator. The ratio of weekend-to-weekday seems to be relatively close to 2:5, so the day data is likely distributed evenly across each day of the week. Most visitor sessions do not result in a purchase.
+There are many more returning visitors to the site than new visitors. "Other" visitor type might represent some type of site administrator. The ratio of weekend-to-weekday seems to be relatively close to 2:5, so the sessions are likely distributed evenly across each day of the week. Most visitor sessions do not result in a purchase.
 
 ### Conversion Ratios for Categories
 
-Let's also take a look at the relative distribution of `TRUE` and `FALSE` Revenue values within each individual categorical value, using a set of bar ratios. This can help to feel for which specific user attributes may indicate a higher likelihood to make a purchase.
+Let's also take a look at the relative distribution of `TRUE` and `FALSE` Revenue values within each individual categorical field value, using a set of bar ratios. This could help to get a feel for which specific user attributes may indicate a higher likelihood to make a purchase.
 
 ```{r stacked_bars}
 # Custom (stacked) bar plot function
@@ -317,11 +327,11 @@ We can see a fairly consistent distribution of purchases-to-nonpurchases across 
 
 ## Data Preprocessing
 
-Now that we've viewed our data, we can ready it in preparation of modeling.
+Now that we've viewed our data, we can prepare it for modeling.
 
 ### Convert Variables for Modeling
 
-The "Special" day field already has an ordered/numeric quality about it, so let's convert it back to a numeric data type. We'll also swap the `True`/`False` values in the "Weekend" column to 1's and 0's.
+The "Special" day field already has an ordered and numeric quality about it, so let's convert it back to a numeric data type. We'll also swap the `True` and `False` values in the "Weekend" column to 1's and 0's.
 
 ```{r vc_modeling}
 osi <- osi %>% 
@@ -337,11 +347,11 @@ str(osi)
 
 ### Feature Engineering
 
-Lack of extensive context for features; most categories contain unspecified values, represented by integers (1, 2, 3, 4, etc...). Given the limited information, I'll create some sample features that may or may not represent a given type of purchasing scenario. (\* I don't really intend for these to be effective, this just to fill an project assignment requirement within the contextual constraints of the data.)
+Lack of extensive context exists for features; most categories contain unspecified values represented by integers (1, 2, 3, 4, etc...). Given the context limitations, I'll create some sample features that may represent a given type of purchasing scenario. (\* I don't really intend for these to be effective, this just to fill an project assignment requirement within the contextual constraints of the data.)
 
 Holiday Season: Representing the more active annual period in Western markets, from September to December.
 
-Last Minute Shopper: Indicates a returning visitor who's session is closer in proximity to a "special day" or holiday.
+Last Minute Shopper: Indicates a returning visitor whose session is closer in proximity to a "special day" or holiday.
 
 ```{r feature_engineering}
 # Holiday Season
@@ -351,6 +361,7 @@ osi$HolidaySeason = ifelse(osi$Month %in% c("Sep", "Oct", "Nov", "Dec"),
 # Last Minute Shopper
 osi$LastMinShopper = ifelse(osi$VisitorType == "Returning_Visitor" & osi$SpecialDay >= 0.6,
                             1, 0)
+
 # Two-sided t-test of new "Holiday Season" feature
 t.test(osi$Revenue ~ osi$HolidaySeason, alternative = "two.sided")
 ```
@@ -358,7 +369,7 @@ t.test(osi$Revenue ~ osi$HolidaySeason, alternative = "two.sided")
 
 ### One Hot Encoding
 
-Since we need all our features to be in numeric format, we of course need to one-hot encode our factor variables into many numeric features. The many unique values within the "Browser" and "TrafficType" columns is going to lead to a whole lotta feature variables to look at, which will be *SO FUN*.
+Since we need all of our features to be in numeric format, the factor variables need to be encoded into many numeric features. The many unique values within the "Browser" and "TrafficType" columns are going to lead to a whole lot of feature variables to look at, which will be *SO FUN*.
 
 ```{r one_hot}
 # Copy of data frame
@@ -423,18 +434,26 @@ test_proc %>% head()
 
 ## Model Development
 
-Finally, we can start modeling. I'm going to explore modeling methods using logistic regression, step-wise logistic regression, basic decision trees, and ensemble tree methods using bagging and random forests.
+Finally, we can start modeling. I'm going to explore modeling methods using logistic regression, stepwise logistic regression, basic decision trees, and ensemble tree methods using bagging and random forests.
 
-For this first part, we just want to do some basic modeling of all available features, and probe for the most effective features. Because, we're using all features, we will not be employing a random forest model in this section. That means right now we'll focus on: - logistic regression - step-wise regression - basic decision trees - bagged decision trees
+For this first part, we just want to do some basic modeling of all available features, and probe for the most effective features. Because, we're using all available features, we will not be employing a random forest model in this section. That means right now, we'll focus on:
 
-\* *With particular focus on the step-wise model.*
+-   logistic regression
+
+-   stepwise regression
+
+-   basic decision trees
+
+-   bagged decision trees
+
+\* *With particular focus on the stepwise model.*
 
 ### Logistic Regression
 
-Logistic regression is the common go-to method for these sort of binary classification problems. It's simple, easy to understand, and works well for a wide assortment of scenarios. Logistic regression predicts probabilities between 0 and 1; these probabilities are then used to classify the outcome of an observation into one of two categories. A threshold is estanblished, and the observation is classified into one of the categories depending on whether its above or below that threshold.
+Logistic regression is the common go-to method for this sort of binary classification problem. It's simple, easy to understand, and works well for a wide assortment of scenarios. Logistic regression predicts probabilities between 0 and 1; these probabilities are then used to classify the outcome of an observation into one of two categories. A threshold is established, and the observation is classified based on whether its above or below that threshold.
 
 ```{r logistic_model_full, warning=FALSE}
-# Building a logistic model using all (remaining) features
+# Building a logistic model using all features
 logistic_model_full = train(Revenue ~ ., data = train_proc, method = "glm", family = "binomial")
 
 # Summary of the logistic regression model
@@ -457,20 +476,20 @@ logistic_cm_full <- confusionMatrix(logistic_predictions_full, test_proc$Revenue
 print(logistic_cm_full)
 ```
 
-From the confusion matrix, we can take away a baseline for all of our metrics. While accuracy should not be relied on as the sole factor when grading a model, it's good to look at what sort of accuracy expectations we're dealing with here. As mentioned, the logistic model is one of the simplest models employed for classification tasks, so our 89.13% accuracy metric here is a good frame of reference for grading future, more complex models.
+From the logistic model's confusion matrix, we can take away a baseline for all of our metrics. While accuracy should not be relied on as the sole factor when grading a model, it's good to look at what sort of accuracy expectations we're dealing with here. As mentioned, the logistic model is one of the simplest models employed for classification tasks, so our 89.13% accuracy metric here is a good frame of reference for grading future, more complex models.
 
-As an additional reference, we can also compare a scenario where a rudimentary model just guesses `FALSE` predictions for all outcomes. This accuracy figure would simply be calculated as the percentage original of the "Revenue" column that contains `FALSE` values, amounting to an 84.53% accuracy rating.
+As an additional reference, we can also compare a scenario where a rudimentary model just guesses `FALSE` predictions for all outcomes. This accuracy figure would simply be calculated as the percentage of the original "Revenue" column that contains `FALSE` values, amounting to an 84.53% accuracy rating.
 
-The logistic model is a nearly 5% improvement over this figure, which is good, as it means the model is at least better than the "Christmas Tree on the SAT" type of response.
+The logistic model is a nearly 5% improvement over this figure, which is good, as it means the model is at least better than a "Christmas Tree on the SAT" level of competence.
 
 ### Stepwise Regression
 
-Step-wise models are generally less effective at finalized modeling, but are a terrific method by which to check which features are the most effective. They work by applying logistic models to different formula combinations of features in a "step-by-step" method, and then selecting the most optimal. Think of it like apply the previous model in a loop. Because of its relatively standard use in probing for effective features, I'm going to rely especially on this model for final decisions when pruning unnecessary features variables.
+Stepwise models are generally less effective at finalized modeling, but are a terrific method for checking which features are the most effective. They work by applying logistic models in a "step-by-step" method to different formula combinations of features, and then selecting the most optimal. Think of it like applying variations on the previous logistic model in a loop. Because of its relatively standard use in probing for effective features, I'm going to rely especially on this model for final decision-making when pruning unnecessary feature variables.
 
-The full summary output for the stepwise model is too extensive to show here, as it includes all feature combinations in the one-hot encoded dataset.
+The full summary output for the stepwise model is too extensive to show here, as it includes all feature combinations in the one-hot encoded dataset. There also does not seem to be a way to mute or hide the output messages from this model using any custom Rmarkdown settings, so instead, I'll show screenshots of my final stepwise results using the current seed.
 
 ```{r step_model_full, eval=FALSE, warning=FALSE, message=FALSE}
-# Building a step-wise model using all (remaining) features
+# Building a stepwise model using all features
 step_model_full = train(Revenue ~ ., data = train_proc,
                    method = "glmStepAIC", family = "binomial")
 
@@ -483,9 +502,11 @@ step_predictions_full = predict(step_model_full, newdata = test_proc)
 # Converting the format of predicted binary values
 step_predictions_logical_full <- factor(ifelse(step_predictions_full == "FALSE", FALSE, TRUE), levels = c(FALSE, TRUE))
 
-# Summary of the step-wise regression model
+# Summary of the stepwise regression model
 step_cm_full <- confusionMatrix(step_predictions_logical_full, test_osi$Revenue)
 ```
+
+![Stepwise Model Feature P-value Summaries](https://github.com/bryantjay/Portfolio/blob/main/R%20-%20Predicting%20Online%20Shopper%20Intention/source_files/images/stepwise_features.png?raw=true)
 
 Our stepwise model summary shows us a grouping of significant features similar to that of the base logistic regression model. However, ProductRelated metrics are deemed "more important", and additional attention is given to instances where the visitor's Operating System and/or Browser are of category "2".
 
@@ -495,7 +516,7 @@ Our stepwise model summary shows us a grouping of significant features similar t
 
 ### Decision Tree Model
 
-In preparation for all of our tree-based methods, we need to separate the outcome variable from the training set (otherwise, the models will erroneously treat it as feature with 100% accuracy).
+In preparation for all of our supervised tree-based methods, we need to separate the outcome variable from the training set (otherwise, the models will erroneously treat it as a predictor with 100% accuracy).
 
 ```{r tree_prep}
 # Drop the "Revenue" column from train_proc
@@ -508,7 +529,7 @@ A decision tree is a simple and powerful method used for classification tasks. I
 The `rpart` package offers useful functions for interpreting decision tree results.
 
 ```{r rpart_tree}
-# Building a decision tree model using all (remaining) features
+# Building a decision tree model using all features
 tree_model_full = train(y = train_rev$Revenue, x = train_features, method = "rpart")
 
 # Plot of decision tree structure
@@ -533,7 +554,7 @@ rpart_cm_full <- confusionMatrix(tree_predictions_full, test_osi$Revenue)
 A "bagged" (bootstrap-aggregated) decision tree is an ensemble tree method. It works by creating multiple decision trees, each trained on a different random subset of the data. The predictions from all the trees contribute "votes" to make the final classification decision. Bagging helps reduce the model's variance, making it less likely to overfit the training data in scenarios with many potential predictors (such as this one).
 
 ```{r bagged_model_full}
-# Building a bagged d-tree model using all (remaining) features
+# Building a decision tree model using all features
 bagged_model_full = train(y = train_osi$Revenue, x = train_features, method = "treebag")
 
 # Plot of feature importance
@@ -555,13 +576,13 @@ We take our model training summaries on feature significance from each of the fo
 
 ![Feature Importance](https://github.com/bryantjay/Portfolio/blob/main/R%20-%20Predicting%20Online%20Shopper%20Intention/source_files/feature_importance.png?raw=true)
 
-Generally, all models agree upon "PageValues" being a very significant predictor. "ExitRates" and both product-related page metrics are also treated with some importance by all models. The bagged tree model weighs slightly more importance toward the various numeric columns of our dataset, while the decision tree model claims that returning visitors and last-minute shoppers are also mild indicator of whether a transaction will occur.
+Generally, all models agree upon "PageValues" being a very significant predictor. "ExitRates" and both product-related page metrics are also treated with some importance by all models. The bagged tree model weighs slightly more importance toward the various numeric columns of our dataset, while the decision tree model claims that returning visitors and last-minute shoppers are also mild indicators of whether a transaction will occur.
 
 However, I elect to predominantly rely on the stepwise model results, as (again) this type of model is pretty conventional in probing for features due to its systematic nature of trying each feature combination. This doesn't mean it's our final model; it's just a good model for this particular use.
 
-One important thing is that "ProductRelated" and "ProductRelated_Duration" are highlighted as important features in every model we tried. However, remember that pair plot from earlier?
+One important thing is that "ProductRelated" and "ProductRelated_Duration" are highlighted as important features in every model we tried. However, remember that pairplot from earlier?
 
-We know that these two features are very strongly correlated, so we should prune one of them. I'll opt to exclude the duration feature, as the page count variant seems to carry sightly lower p-values / slightly higher importance levels in most models.
+We know that these two features are very strongly correlated, so we should prune one of them. I'll opt to exclude the "\_Duration" feature, as the page count variant seems to carry sightly lower p-values and slightly higher importance levels in most models.
 
 ```{r feature_selection}
 # Drop the "Revenue" column from train_proc
@@ -577,9 +598,9 @@ train_rev <- training_set %>% select(Revenue)
 train_features <- training_set %>% select(-Revenue)
 ```
 
-## Improved Models
+## Pruned Models
 
-Now we can train each of our models again using our optimized set of predictors. Luckily, this will go much faster this time around for our first four models, since we are utilizing a smaller grouping of variable combinations.
+Now we can train each of our models again using our optimized set of predictors. Luckily, this will go much faster this time around for our first four models, since we are utilizing a smaller group of variable combinations.
 
 We're also going to add in a random forest model as our fifth model.
 
@@ -601,7 +622,7 @@ logistic_cm
 ### Stepwise Regression
 
 ```{r step_model_pruned, eval=FALSE, warning=FALSE, message=FALSE}
-# Building a step-wise model using selected features
+# Building a stepwise model using selected features
 step_model = train(Revenue ~ ., data = training_set,
                    method = "glmStepAIC", family = "binomial")
 
@@ -611,10 +632,14 @@ step_predictions = predict(step_model, newdata = test_proc)
 # Converting the format of predicted binary values
 step_predictions_logical <- factor(ifelse(step_predictions == "FALSE", FALSE, TRUE), levels = c(FALSE, TRUE))
 
-# Summary of the step-wise regression model
+# Summary of the stepwise regression model
 step_cm <- confusionMatrix(step_predictions_logical, test_proc$Revenue)
 step_cm
 ```
+
+You'll notice that the pruned stepwise model has the exact same confusion matrix results as the pruned logistic model; this is related to what I mentioned earlier about how the stepwise model operates.
+
+![Stepwise Pruned Model Confusion Matrix](https://github.com/bryantjay/Portfolio/blob/main/R%20-%20Predicting%20Online%20Shopper%20Intention/source_files/images/imgH1.png?raw=true)
 
 ### Decision Tree Model
 
@@ -654,7 +679,7 @@ bagged_cm
 
 ### Random Forest Model
 
-A random forest is an ensemble learning method used for classification that combines many decision trees to improve accuracy and reduce overfitting. Each decision tree is trained on a random subset of the data, and each considers only a random subset of features when making splits. After all trees make their predictions, the final classification is determined by majority voting from all the trees, much like the bagged method. However, it also takes much long to run than any of the previous methods, so go turn on a movie or something if your replicating this.
+A random forest is an ensemble learning method used for classification that combines many decision trees to improve accuracy and reduce overfitting. Each decision tree is trained on a random subset of the data, and each considers only a random subset of features when making splits. After all trees make their predictions, the final classification is determined by majority voting from all the trees, much like the bagged method. However, it also takes much longer to run than any of the previous methods; so if your replicating this, go turn on a movie or something.
 
 ```{r random_forest}
 # Building a random forest model using selected features
@@ -679,17 +704,25 @@ rf_cm
 
 ## Model Performance
 
-We've now preprocessed our data, probed for useful predictors, and trained and tested all of our models. It's time to compare the results of each model and generate a conclusion about which would be best to implement in a final decision.
+We've now preprocessed our data, probed for useful predictors, trained all of our models, and made predictions on new data. It's time to compare the results of each model, and form a final conclusion about which would be best to implement.
 
 We're going to use five common classification metrics to grade our performance:
+
+-   Accuracy
+
+-   Specificity
+
+-   Sensitivity ("Recall")
+
+-   Precision
+
+-   F1 Score
 
 ### Accuracy
 
 Accuracy is as simple as it gets. Overall, what percentage of outcomes did each model predict correctly?
 
-Accuracy is important to consider, but it can often be misleading. 80% seems good enough, right? I mean, that's basically a B-minus; that's a lazy college student's dream! However...
-
-In this scenario, if we were to guess "FALSE" for all outcomes, we would be correct 84.5% of the time (because FALSE outcomes make up 84% of the data). Anything worse than a 84.5% accuracy level would be garbage-level performance.
+Accuracy is important to consider, but it can often be misleading. 80% seems "good enough", but in this scenario, it would be sub-par. If we were to guess "FALSE" for all outcomes, we would be correct 84.5% of the time (because FALSE outcomes make up 84.5% of the data). Anything worse than an 84.5% accuracy level would be abysmal performance.
 
 ```{r accuracy_matrix}
 # Calculate percentage of 'FALSE' values in the 'Revenue' factor column
@@ -721,7 +754,7 @@ print(accuracy_matrix)
 ```
 ![imgL1](https://github.com/bryantjay/Portfolio/blob/main/R%20-%20Predicting%20Online%20Shopper%20Intention/source_files/images/imgL1.png?raw=true)
 
-Luckily, all of our models performed better than the "all-FALSE" method, so we know they're doing something right. Some models slightly improved after pruning predictors, and some worsened. Noticeably, our logistic and stepwise models now have the same accuracy statistic, because they both concluded on the same final model formula; this will carry on over the following metrics as well. The only model to show strong(-ish) improvements after pruning was the bagged tree model, and the new random forest model outperformed all others.
+Luckily, all of our models performed better than the "all-FALSE" method, so we know they're doing something right. Some model performance slightly improved after predictors were pruned, and some worsened. Noticeably, our logistic and stepwise models now have the same accuracy statistic, because they both concluded on the same final model formula; this observation will stay true for later metrics as well. The only model to show strong(-ish) improvements after pruning was the bagged tree model, and the new random forest model outperformed all others.
 
 ### Specificity
 
@@ -754,13 +787,13 @@ print(specificity_matrix)
 ```
 ![imgL2](https://github.com/bryantjay/Portfolio/blob/main/R%20-%20Predicting%20Online%20Shopper%20Intention/source_files/images/imgL2.png?raw=true)
 
-Specificity is a good metric to consider alongside others, but it is not the "best" metric by itself For reference, an "all-FALSE" model would be graded as 1.0 here. This is simply the success ratio at identifying actual negative outcomes, regardless of accuracy or precision. A lot of times, what this means in the context of a FALSE-heavy set of outcomes, is that the model is taking fewer risks in identifying potential TRUE values.
+Specificity is a good metric to consider alongside others, but it is not the "best" metric by itself For reference, an "all-FALSE" model would be graded as 1.0 here. This is simply the success ratio for identifying actual negative outcomes, regardless of accuracy or precision. A lot of times, what this means in the context of a FALSE-heavy set of outcomes, is that the model is taking fewer risks in identifying potential TRUE values.
 
-In this case, slight declines were observed in the specificity of both the Logistic and Stepwise pruned models relative to their full-model counterparts. The Decision Tree's specificity remained unchanged. Bagged specificity showed improvement between full and pruned models. Random Forest specificity came in at a level between that of the Decision Tree and Bagged pruned models.
+In this case, slight declines were observed in the specificity of both the Logistic and Stepwise pruned models relative to their full-model counterparts. The Decision Tree's specificity remained unchanged. Bagged specificity showed improvement between full and pruned models. Random Forest specificity came in at a level similar to that of the Decision Tree.
 
 ### Sensitivity
 
-Sensitivity (or "Recall") measures a model's success rate identifying the actual positive instances.
+Sensitivity (sometimes known as "Recall") measures a model's success rate at identifying actual positive instances.
 
 ***Sensitivity = TP / (TP + FN)***
 
@@ -791,9 +824,9 @@ print(sensitivity_matrix)
 ```
 ![imgL3](https://github.com/bryantjay/Portfolio/blob/main/R%20-%20Predicting%20Online%20Shopper%20Intention/source_files/images/imgL3.png?raw=true)
 
-Sensitivity is the opposite to specificity, and like specificity, sensitivity should not be considered in isolation. For reference, an "all-FALSE" model would be graded as a big, fat zero here; no TRUE outcomes were correctly predicted. If we thought about specificity as an indicator for a model's ability to take risk, sensitivity can sometimes indicate whether the model is taking *too much* risk.
+Sensitivity is the opposite to specificity, and like specificity, sensitivity should not be considered in isolation. For reference, an "all-FALSE" model would be graded as a big, fat zero here; no TRUE outcomes were correctly predicted. You can begin to see how both sensitivity and specificity work together in cooperation to signal how much risk a given model is taking to make predictions.
 
-We see a slight sensitivity deterioration in all revised models, except the Logistic model. These pruned models seem to be worsening in their ability to pick out TRUE instances. Random Forest sensitivity outperforms that of every other model, with the two other tree-based models underperforming relative to the regression models. When we consider the higher accuracy, higher specificity, and higher sensitivity of the Random Forest model together, it's starting to become clear that this model is somewhat outperforming the other variants.
+We see a slight sensitivity deterioration in all revised models, except the Logistic model. These pruned models seem to be worsening in their ability to pick out TRUE instances. Random Forest sensitivity outperforms that of every other model, with the two other tree-based models underperforming relative to the regression models. When we consider the higher accuracy, higher specificity, and higher sensitivity of the Random Forest model together, it's starting to become noticeable that this model is somewhat outperforming the other variants.
 
 ### Precision Calculation
 
@@ -828,13 +861,13 @@ print(precision_matrix)
 
 There is a slight decline in precision between the full and pruned states of all models (not including the Random Forest model, of course, which had no full counterpart). It should be noted that this decline is very minimal, and also isn't *necessarily* a negative.
 
-If a model decides to take more risks and make more TRUE predictions, precision can be lowered as a result, even if accuracy is increased. The Random Forest model is less precise than the bagged model, but is also more accurate in all of its predictions. Meanwhile the precision of the Bagged model decreased, while its specificity metric increased, indicating it began defaulting to FALSE predictions more often
+If a model decides to take more risks and make more TRUE predictions, precision can be lowered as a result, even if accuracy is increased. The Random Forest model is less precise than the bagged model, but is also more accurate in all of its predictions.
 
 ### F1 Score Calculation
 
-F1 Score is a metric that combines both Precision and Recall (Sensitivity) into a single number using the harmonic mean:
+F1 Score is a metric that combines both Precision and Recall (Sensitivity) into a single number using a harmonic mean:
 
-*F1 = (2 x Precision x Recall)/(Precision + Recall)*
+***F1 = (2 x Precision x Recall)/(Precision + Recall)***
 
 ```{r}
 # Creating the F1 Score Matrix
@@ -862,15 +895,14 @@ print(f1_score_matrix)
 ```
 ![imgL5](https://github.com/bryantjay/Portfolio/blob/main/R%20-%20Predicting%20Online%20Shopper%20Intention/source_files/images/imgL5.png?raw=true)
 
-The F1 scores are relatively consistent across all models: usually between 93.5% and 94.5% There is a slight improvement in Logistic model performance, while all other revised models face declines. These decreases are only marginal in the Stepwise and Decision Tree models, but more significant in the Bagged tree model. The Random Forest F1 score outperforms other models.
+The F1 scores are relatively consistent across all models: usually between 93.5% and 94.5% There is a slight improvement in Logistic model performance, while all other revised models see decreases. These decreases are only marginal in the Stepwise and Decision Tree models, but more significant in the Bagged tree model. The Random Forest F1 score outperforms all other models.
 
 ## Conclusions
 
-When all the above classification metrics are taken together in whole, it's pretty safe to conclude that the Random Forest model is probably the best model for us to use in the future for predicting upon new data. It's accuracy level is higher than that of all other models, and its precision and F1 scores also sit on the mid-to-higher ends of each metric for all models.
+When all the above classification metrics are taken together in whole, I would argue that the Random Forest model is probably the best model for us to use in the future, for predicting upon new data. It's accuracy level is higher than that of all other models, and its precision and F1 scores also sit on the mid-to-higher ends of each metric for all models, indicating a good level of risk-taking ability.
 
 The Bagged model seems to have some good prediction metrics at first, but after taking a closer look, this seems to be due to it taking fewer risks in making TRUE predictions (much like the all-FALSE scenario). Both regression models are less accurate than all of the tree models, but both of them also take somewhat greater risk in making TRUE predictions. The basic Decision Tree model actually seems to perform pretty well, maintaining good accuracy, precision, and F1 scores, while still keeping its sensitivity metric close to that of the Random Forest model and the two regression models; I think this model may be a good second alternative to the Random Forest model.
 
-One drawback with the Random Forest model is it's black-box nature, of course. As a less interpretable model it can be hard to discern why certain prediction-making decisions are made. Luckily, this is a low-stakes online marketing scenario, predominantly used for projecting budgets or trying to find prospective market clusters. These aren't decisions which could drastically influence or affect people's lives, like a loan-approval scenario or a scenario identifying life-threatening diseases. A less-interpretable method is usually suitable here. If a more transparent method were needed for some reason, the basic Decision Tree model that we created is very easy to interpret; this could be provided as a potential alternative.
+One drawback with the Random Forest model is it's black-box nature, of course. As a less interpretable model, it can be hard to discern why certain prediction-making decisions are made. Fortunately, this is a low-stakes online marketing scenario, predominantly used for projecting budgets or trying to find prospective market clusters. These aren't decisions which could drastically influence or affect people's lives, like a loan-approval scenario or a scenario identifying life-threatening diseases. A less-interpretable method is usually suitable here. If a more transparent method were needed for some reason, the basic Decision Tree model that we created is very easy to interpret; this could be provided as a potential alternative.
 
-
-
+.
