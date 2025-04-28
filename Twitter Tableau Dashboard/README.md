@@ -1,6 +1,6 @@
 # Analyzing Twitter Data
 
-[You can view the finalized Tableau dashboard on my online portfolio here.](https://public.tableau.com/views/TwitterDashboard_16986198683330/TwitterDashboard?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link)
+[You can view the finalized dashboard on my Tableau profile here.](https://public.tableau.com/views/TwitterDashboard_16986198683330/TwitterDashboard?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link)
 
 This is my own personal data from Twitter.
 
