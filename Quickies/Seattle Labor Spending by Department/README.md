@@ -1,6 +1,6 @@
 # Exploring Seattle City Wages
 
-This is a brief look at the wage data for various public departments within my city of Seattle. This and other public municipal data are readily available through Seattle's [Open Data Portal](https://data.seattle.gov/).
+This is a brief look at the wage data for various public departments within my city of Seattle. This and other public municipal data is readily available through Seattle's [Open Data Portal](https://data.seattle.gov/).
 
 ## Data Download
 
@@ -11,74 +11,98 @@ This project is just some basic exploratory data analysis. The only necessary pa
 
 Taking a look at the data, we see our four data fields: 3 string columns and 1 numeric column.
 
-```
+
+```python
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 from matplotlib.ticker import MultipleLocator, FuncFormatter
 
+# File path
 path = "https://raw.githubusercontent.com/bryantjay/Portfolio/refs/heads/main/Quickies/Seattle%20Labor%20Spending%20by%20Department/source_files/City_of_Seattle_Wage_Data_20250222.csv"
 
+# CSV data read in as dataframe
 wages = pd.read_csv(path)
 
+# Converting column names to snake_case format
 wages.columns = wages.columns.str.strip().str.replace(' ', '_').str.replace(r'([a-z0-9])([A-Z])', r'\1_\2').str.lower()
 
 print(wages.head(10), "\n")
 print(wages.info(), "\n")
 print(wages.describe(include='all'))
 ```
-|    | employee_id   | department                     | job_title                |   hourly_rate |
-|---:|:--------------|:-------------------------------|:-------------------------|--------------:|
-|  0 | E00001        | Office of Economic Development | StratAdvsr2,Exempt       |        71.32  |
-|  1 | E00002        | Office of Economic Development | Admin Staff Asst *       |        38.46  |
-|  2 | E00003        | Education & Early Learning     | StratAdvsr1,Exempt       |        60.646 |
-|  3 | E00004        | Education & Early Learning     | Admin Staff Asst         |        44.83  |
-|  4 | E00005        | Education & Early Learning     | Grants&Contracts Spec,Sr |        43.1   |
-|  5 | E00006        | Education & Early Learning     | Early Ed Spec,Sr BU      |        52.2   |
-|  6 | E00007        | Police Relief & Pension Fund   | Contract Employee *      |        94.473 |
-|  7 | E00008        | Parks & Recreation             | Sfty&Hlth Spec,Sr        |        53.82  |
-|  8 | E00009        | Parks & Recreation             | High School Intern *     |        19.97  |
-|  9 | E00010        | Parks & Recreation             | High School Intern *     |        19.97  |
 
-| #   | Column       | Non-Null Count | Dtype   |
-|-----|--------------|----------------|---------|
-| 0   | employee_id  | 13149 non-null | object  |
-| 1   | department   | 13149 non-null | object  |
-| 2   | job_title    | 13149 non-null | object  |
-| 3   | hourly_rate  | 13149 non-null | float64 |
-
-|        | employee_id   | department         | job_title   |   hourly_rate |
-|:-------|:--------------|:-------------------|:------------|--------------:|
-| count  | 13149         | 13149              | 13149       |    13149      |
-| unique | 13149         | 40                 | 1157        |      nan      |
-| top    | E00001        | Parks & Recreation | Lifeguard * |      nan      |
-| freq   | 1             | 2029               | 401         |      nan      |
-| mean   | nan           | nan                | nan         |       52.5853 |
-| std    | nan           | nan                | nan         |       18.8665 |
-| min    | nan           | nan                | nan         |        5.53   |
-| 25%    | nan           | nan                | nan         |       38.46   |
-| 50%    | nan           | nan                | nan         |       51.22   |
-| 75%    | nan           | nan                | nan         |       64.68   |
-| max    | nan           | nan                | nan         |      236.484  |
-
+      employee_id                      department                 job_title  \
+    0      E00001  Office of Economic Development        StratAdvsr2,Exempt   
+    1      E00002  Office of Economic Development        Admin Staff Asst *   
+    2      E00003      Education & Early Learning        StratAdvsr1,Exempt   
+    3      E00004      Education & Early Learning          Admin Staff Asst   
+    4      E00005      Education & Early Learning  Grants&Contracts Spec,Sr   
+    5      E00006      Education & Early Learning       Early Ed Spec,Sr BU   
+    6      E00007    Police Relief & Pension Fund       Contract Employee *   
+    7      E00008              Parks & Recreation         Sfty&Hlth Spec,Sr   
+    8      E00009              Parks & Recreation      High School Intern *   
+    9      E00010              Parks & Recreation      High School Intern *   
+    
+       hourly_rate  
+    0       71.320  
+    1       38.460  
+    2       60.646  
+    3       44.830  
+    4       43.100  
+    5       52.200  
+    6       94.473  
+    7       53.820  
+    8       19.970  
+    9       19.970   
+    
+    <class 'pandas.core.frame.DataFrame'>
+    RangeIndex: 13149 entries, 0 to 13148
+    Data columns (total 4 columns):
+     #   Column       Non-Null Count  Dtype  
+    ---  ------       --------------  -----  
+     0   employee_id  13149 non-null  object 
+     1   department   13149 non-null  object 
+     2   job_title    13149 non-null  object 
+     3   hourly_rate  13149 non-null  float64
+    dtypes: float64(1), object(3)
+    memory usage: 411.0+ KB
+    None 
+    
+           employee_id          department    job_title   hourly_rate
+    count        13149               13149        13149  13149.000000
+    unique       13149                  40         1157           NaN
+    top         E00001  Parks & Recreation  Lifeguard *           NaN
+    freq             1                2029          401           NaN
+    mean           NaN                 NaN          NaN     52.585344
+    std            NaN                 NaN          NaN     18.866458
+    min            NaN                 NaN          NaN      5.530000
+    25%            NaN                 NaN          NaN     38.460000
+    50%            NaN                 NaN          NaN     51.220000
+    75%            NaN                 NaN          NaN     64.680000
+    max            NaN                 NaN          NaN    236.484000
+    
 
 ## Early Exploration
 
 In the above `describe()` statement, we can note a few things:
 - 13,149 rows are included, each referencing a single department position.
-- The data includes a total of 40 different city departments and 1,157 different positions (not counting similarly named positions across different departments).
+- The data includes a total of 40 different city departments and 1,157 different positions (not differentiating similarly named positions across different departments).
 - Parks & Rec seems to have the most employed positions out of all departments.
-- Hourly wages range from $5.53/hr (which is technically illegal, but there's more to this number) to $236.48/hr(!).
+- Hourly wages range from \$5.53/hr (which is technically illegal, but there's more to this number) to \$236.48/hr(!).
 - Most people are paid within the range of $38-65 per hour.
 
-The department statistics are really what I'm after here. Moving forward, I'm going to group the data into the different departments and subsequently explore the aggregates. We'll take a look at the number of different positions for each department, the number of employees for each, and the mean and median wages. Since we're dealing with wage data, and wages are typically skewed toward higher earners, the wage medians will be our most reliable central tendency statistic.
+The department statistics are really what I'm after here. Moving forward, I'm going to group the data into the different departments and subsequently explore the aggregates. We'll take a look at the number of different positions for each department, the number of employees for each, and the mean and median wages. Since we're dealing with wage data, and wages are typically skewed toward higher earners, medians will be our most reliable central tendency statistic rather than means.
 
 I'm also creating a simple statistic for hourly labor expenditures (`hourly_dept_exp`) for each department, which is the product of the department's median wage and its total number of employees (or at least employed positions).
 
-```
+
+```python
+# Printing out unique counts for department and job_title
 print(f"Number of City Departments: {wages['department'].nunique()}")
 print(f"Total Number of Positions: {wages['job_title'].nunique()}")
 
+# Aggregating data table by department
 departments = wages.groupby('department').agg(
     unique_job_titles=('job_title', 'nunique'),
     num_employees=('employee_id', 'size'),
@@ -86,13 +110,14 @@ departments = wages.groupby('department').agg(
     median_hourly_rate=('hourly_rate', lambda x: round(x.median(), 2))
 ).reset_index()
 
+# Adding two more custom columns
 departments['pct_mean_med_diff'] = round((departments.mean_hourly_rate - departments.median_hourly_rate) / departments.median_hourly_rate * 100, 1)
-#departments['median_salary'] = departments.median_hourly_rate * 2000
 departments['hourly_dept_exp'] = departments.num_employees * departments.median_hourly_rate
 ```
-Number of City Departments: 40
 
-Total Number of Positions: 1157
+    Number of City Departments: 40
+    Total Number of Positions: 1157
+    
 
 ### Here's the data we're looking at:
 
@@ -140,7 +165,9 @@ Total Number of Positions: 1157
 | 39 | Sustainability & Environment   |                  23 |              50 |              59.24 |                63.64 |                -6.9 |                3182    |
 
 ## Visualizations
-```
+
+
+```python
 # Default plot settings
 plt.rcParams['figure.facecolor'] = 'whitesmoke'
 plt.rcParams['axes.facecolor'] = 'whitesmoke'
@@ -163,10 +190,9 @@ When we view the departments by the number of people they employ, we notice 12 d
 - 'Seattle Public Library'
 - 'Seattle Public Utilities'
 
-```
-import matplotlib.pyplot as plt
-import seaborn as sns
 
+```python
+# Custom function to duplicate bar plot format
 def plot_department_data(ax, x_column, xlabel, plot_title):
     # Sort departments by the specified x column in descending order
     departments_sorted = departments.sort_values(x_column, ascending=False)
@@ -190,53 +216,60 @@ def plot_department_data(ax, x_column, xlabel, plot_title):
     ax.set_title(plot_title, fontsize=14, pad=25)
 
 
-# Create subplots (2 rows and 1 column)
+# Create subplots
 fig, axes = plt.subplots(1, 2, figsize=(16, 8))
 
-# Plot on the first subplot (row 1)
+# Plot the first subplot
 plot_department_data(axes[0], 'num_employees', 'Number of Employees', 'Employees per Department')
 
-# Plot on the second subplot (row 2)
+# Plot the second subplot
 plot_department_data(axes[1], 'hourly_dept_exp', 'Hourly Labour Expenditure', 'HLE per Department')
 
-# Adjust layout to make sure titles and labels fit properly
+# Adjust layout and show plot
 plt.tight_layout()
 plt.show()
 
 
 print(departments[departments['num_employees'] > 400]['department'])
-```
-![fig1](https://github.com/bryantjay/Portfolio/blob/main/Quickies/Seattle%20Labor%20Spending%20by%20Department/plots/fig1.png?raw=true)
 
-|    | department                     |
-|---:|:-------------------------------|
-|  7 | Construction & Inspections     |
-| 12 | Finance & Admin Services       |
-| 13 | Fire Department                |
-| 15 | Human Services Department      |
-| 17 | Information Technology         |
-| 29 | Parks & Recreation             |
-| 31 | Police Department              |
-| 33 | Seattle Center                 |
-| 34 | Seattle City Light             |
-| 36 | Seattle Dept of Transportation |
-| 37 | Seattle Public Library         |
-| 38 | Seattle Public Utilities       |
+```
+
+
+    
+![fig1](https://github.com/bryantjay/Portfolio/blob/main/Quickies/Seattle%20Labor%20Spending%20by%20Department/plots/fig1.png?raw=true)    
+
+
+    7         Construction & Inspections
+    12          Finance & Admin Services
+    13                   Fire Department
+    15         Human Services Department
+    17            Information Technology
+    29                Parks & Recreation
+    31                 Police Department
+    33                    Seattle Center
+    34                Seattle City Light
+    36    Seattle Dept of Transportation
+    37            Seattle Public Library
+    38          Seattle Public Utilities
+    Name: department, dtype: object
+    
 
 We're going to focus on these larger departments and take a look at their spending statistics. More specifically, I'd like to take a look at Police Department expenditures and compare them to the labor expenses of other large city departments.
 
-```
+
+```python
 # Filter departments with more than 400 employees
 large_departments = departments[departments['num_employees'] > 400]
 ```
 
 ### Median Wages for Large Departments
 
-Looking at median wages by department, we can see that the average SPD employee makes more per hour than employees from any other large department (including "skilled" technical areas like IT and electric utilities). A lot of this stems from SPD having trouble finding and keeping police officers employed in recent years, likely due to a number of factors:
+Looking at median wages by department, we can see that the average SPD employee makes more per hour than employees from any other large department (including "skilled" technical areas like IT and electric utilities). A lot of this stems from SPD having trouble finding and keeping police officers employed in recent years, due to a number of factors:
 - [Police officers leaving en masse in refusal to take the COVID-19 vaccine.](https://www.theguardian.com/society/2021/oct/17/police-shortage-vaccine-mandate-unions-seattle-chicago)
-- [Local sentiment against police due to concerns of violence, over-policing, militarization, and perceived ineffectiveness.](https://www.thestranger.com/slog/2020/07/01/44014753/mayor-orders-cops-to-sweep-chop-protesters-vow-to-keep-marching)
+- [Local sentiment against police after May 2020 due to concerns of violence, over-policing, militarization, and perceived ineffectiveness.](https://www.thestranger.com/slog/2020/07/01/44014753/mayor-orders-cops-to-sweep-chop-protesters-vow-to-keep-marching)
 
-```
+
+```python
 # Sort by median_hourly_rate in descending order
 large_departments = large_departments.sort_values('median_hourly_rate', ascending=False)
 
@@ -262,7 +295,7 @@ plt.gca().xaxis.set_major_formatter(formatter)
 
 
 # Annotation text
-text = "The average Police Dept.\nemployee recieves more\nthan employees from any\nother large department."
+text = "The average Police Dept.\nemployee receives more\nthan employees from any\nother large department."
 
 plt.text(57.5, 10, text,
     horizontalalignment='center',
@@ -293,17 +326,24 @@ plt.title('Median Wages for Large Departments', fontsize=14, pad=25)
 # Display the plot
 plt.tight_layout()
 plt.show()
+
 ```
-![fig2](https://github.com/bryantjay/Portfolio/blob/main/Quickies/Seattle%20Labor%20Spending%20by%20Department/plots/fig2.png?raw=true)
+
+
+    
+![fig2](https://github.com/bryantjay/Portfolio/blob/main/Quickies/Seattle%20Labor%20Spending%20by%20Department/plots/fig2.png?raw=true)    
+
+
 
 ### Hourly Labor Expenditures
 
-"Hourly Labor Expenditure" is the amount of money the city spends on wages every hour for all employees. It is represented by the product of the median wage and total number of employees for each department. This assumes all employees are working at the same time, which is, of course, not true given the various employee and department schedules. For example, SPD, SFD, SCL, and SPU employees are more likely to work weekends and odd hours (which in part explains the higher employment rates), while the Finance & Admin office might only work during weekday business hours.
+"Hourly Labor Expenditure" is the estimated amount of money which a city department spends on wages every hour for all employees. It is represented by the product of the median wage and total number of employees for each department. This assumes all employees are working at the same time, which is, of course, not true given the various employee and department schedules. For example, SPD, SFD, SCL, and SPU employees are more likely to work weekends and odd hours (which in part explains the higher employment rates), while the Finance & Admin office might only work during weekday business hours.
 
 However, this does give us a good way to compare spending footprints between departments, effectively giving us a simplified "hourly budget" across departments.
 
-```
-# Sort departments by 'hourly_dept_exp' in descending order and take the top 10
+
+```python
+# Sort departments by 'hourly_dept_exp' in descending order
 departments_sorted = large_departments.sort_values('hourly_dept_exp', ascending=False)
 
 # Create the horizontal bar plot
@@ -343,16 +383,22 @@ plt.title('Hourly Labor Expenditures for Large Departments', fontsize=16, pad=25
 # Display the plot
 plt.tight_layout()
 plt.show()
+
 ```
-![fig3](https://github.com/bryantjay/Portfolio/blob/main/Quickies/Seattle%20Labor%20Spending%20by%20Department/plots/fig3.png?raw=true)
+
+
+    
+![fig3](https://github.com/bryantjay/Portfolio/blob/main/Quickies/Seattle%20Labor%20Spending%20by%20Department/plots/fig3.png?raw=true)    
+
 
 Again, the police department sits near the top of this list, outperformed only by SCL (Seattle's municipal power organization). We can also notice that, even though the Parks & Rec department has the lowest median wage of any of the departments, it ranks #4 in terms of overall spending due to the extremely high number of people it employs.
 
 ### Comparing the Size and Payscales of the Largest City Departments
 
-We can better visualize the above labor expenditure values by directly comparing the sizes of the various departments with the typical wages they offer their employees. A bubble plot is a good use case for this scenario, as we can tie the area of the bubbles to the hourly labor expenditure values.
+We can better visualize the above labor expenditures by directly comparing the sizes of the various departments with the typical wages they offer their employees. A bubble plot is a good visual for this scenario, as we can tie the area of the bubbles to the hourly labor expenditures.
 
-```
+
+```python
 # Figure initiation
 plt.figure(figsize=(15, 10))
 
@@ -446,7 +492,12 @@ plt.title('Size-Pay Comparison for Large Departments', fontsize=20, pad=25)
 
 # Show figure
 plt.show()
+
 ```
-![fig4](https://github.com/bryantjay/Portfolio/blob/main/Quickies/Seattle%20Labor%20Spending%20by%20Department/plots/fig4.png?raw=true)
+
+![fig4](https://github.com/bryantjay/Portfolio/blob/main/Quickies/Seattle%20Labor%20Spending%20by%20Department/plots/fig4.png?raw=true)    
+
 
 In conclusion, this exploration of Seattle's public sector wage data provides valuable insights into the city's labor distribution and budget allocations across various departments. By examining factors such as median wages, department size, and hourly labor expenditures, we've been able to identify patterns and disparities, particularly within large departments like the Police Department and Parks & Recreation. These insights highlight the complexities of budgeting for public services, especially in departments with high staffing levels or specialized roles. Moving forward, this analysis can serve as a foundation for deeper investigations into the efficiency and effectiveness of city spending, providing opportunities for informed decision-making in future budget planning and policy discussions.
+
+
