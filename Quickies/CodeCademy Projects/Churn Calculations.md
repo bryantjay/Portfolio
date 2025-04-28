@@ -12,7 +12,7 @@ Four months into launching Codeflix, management asks you to look into subscripti
 Codeflix requires a minimum subscription length of 31 days, so a user can never start and end their subscription in the same month. Take a look at the first 25 rows of data in the `subscriptions` table. How many different segments do you see?
 
 
-```python
+```SQL
 SELECT *
 FROM subscriptions
 LIMIT 25;
@@ -49,7 +49,7 @@ LIMIT 25;
 There seem to only be two distinct categorical values for `segment`, 87 and 30. We can verify this using an aggregation query:
 
 
-```python
+```SQL
 SELECT COUNT(DISTINCT segment) AS 'Number of Segments'
 FROM subscriptions;
 ```
@@ -61,7 +61,7 @@ FROM subscriptions;
 Determine the range of months of data provided. Which months will you be able to calculate churn for?
 
 
-```python
+```SQL
 SELECT
   MIN(subscription_start),
   MAX(subscription_start),
@@ -80,7 +80,7 @@ The data stretches December 2016 to March 2017, but we can only calculate churn 
 You’ll be calculating the churn rate for both segments (87 and 30) over the first 3 months of 2017. To get started, create a temporary table of months.
 
 
-```python
+```SQL
 WITH months AS (
   SELECT
     '2017-01-01' AS first_day,
@@ -109,7 +109,7 @@ FROM months;
 Create a temporary table, cross_join, from the `CROSS JOIN` subscriptions and your months.
 
 
-```python
+```SQL
 WITH months AS (
   SELECT
     '2017-01-01' AS first_day,
@@ -197,7 +197,7 @@ Create a temporary table, `status`, from the `cross_join` table you created. Thi
 - `is_canceled_87` and `is_canceled_30` columns to mark users from segment 87/30 who canceled their subscription during the month. This is `1` if true and `0` otherwise.
 
 
-```python
+```SQL
 WITH months AS (
   SELECT
     '2017-01-01' AS first_day,
@@ -322,7 +322,7 @@ The resulting columns should be:
 - `sum_canceled_30`
 
 
-```python
+```SQL
 WITH months AS (
   SELECT
     '2017-01-01' AS first_day,
@@ -402,7 +402,7 @@ FROM status_aggregate;
 Now we can officially calculate the churn rates for the two segments over the three month period. We'll convert the rates to percentage format, rounded to the first decimal place. Which segment has a lower churn rate?
 
 
-```python
+```SQL
 WITH months AS (
   SELECT
     '2017-01-01' AS first_day,
@@ -491,7 +491,7 @@ So, the initial version of this project demands that the churn rates for separat
 This is fine if the data needs to be directly exported in this wide format, but is not really feasible if there are many potential distinct values for `segment`. If so, each `CASE` statement and the subsequent `87`/`30`-suffixed variables will need to be copy and pasted many, many times. As this isn't really a scalable process in most cases, it would just be better to use a `GROUP BY` statement, and then export the resulting data in long-format if a `PIVOT` function is not available in the given SQL dialect. Here's an example of what this would look like:
 
 
-```python
+```SQL
 WITH months AS (
   SELECT
     '2017-01-01' AS first_day,
