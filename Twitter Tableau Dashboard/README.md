@@ -8,3 +8,6 @@ For my own data security and privacy, I'm not going to be posting the actual dat
 this repository will only contain the final dashboard itself, and the R code used to automatically update and clean new 
 data files.
 
+
+![Dashboard Preview](https://github.com/bryantjay/Portfolio/blob/main/Twitter%20Tableau%20Dashboard/images/Screenshot%202025-04-27%20191629.png?raw=true)
+
