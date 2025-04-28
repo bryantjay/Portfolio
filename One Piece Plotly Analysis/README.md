@@ -1,16 +1,3 @@
-```python
-import os
-
-# Change the working directory
-os.chdir("/Users/sbrya/Documents/random_data/one_piece/visualizations")
-
-cwd = os.getcwd()
-print(cwd)
-```
-
-    c:\Users\sbrya\Documents\random_data\one_piece\visualizations
-    
-
 # Exploring Episodes in *One Piece*
 
 Two things before beginning:
