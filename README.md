@@ -79,7 +79,7 @@
 **Description**: Visual exploration of labor wages and spending by Seattle public departments.
 
 **Key Findings**:
-- SPD (Seattle Police Department) shows highest median hourly wage due to retention issues and workforce reduction.
+- SPD (Seattle Police Department) shows highest median hourly wage.
 - Parks & Rec, despite low wages, ranks high in spending due to its large workforce.
 - Insightful trends into budget allocation and labor economics for city departments.
 
