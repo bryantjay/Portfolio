@@ -17,17 +17,15 @@
 
 ---
 
-## 🥐 Korean Bakery Market Basket Analysis
+## 🐦 Twitter Tableau Dashboard
 
-**Tools**: Python, Jupyter Notebooks  
-**Description**: Association rule mining to identify consumer buying patterns in a Korean bakery.
+**Tools**: R, Tableau  
+**Description**: Personal Twitter data dashboard visualizing engagement and posting patterns.
 
-**Key Findings**:
-- **Bread with Jam**: Strong rule association between "plain bread" and "jam" reveals intuitive consumer preferences; potential for upselling jam to bread buyers.
-- **Item Bundles & Combos**: Associations among top-selling products (e.g., angbutter and drinks) suggest potential for BOGO and cross-promotional campaigns.
-- **Croissant & "Weiner"**: Unusual association suggests a potential for innovation or marketing a new “pig in a blanket” inspired product.
+- Final dashboard available on [Tableau Public](#).
+- Raw data is withheld for privacy; only the dashboard and data-cleaning R script are included.
 
-![Spotting Association Outliers](https://github.com/bryantjay/Portfolio/blob/main/Korean%20Bakery%20Market%20Basket%20Analysis/plots/confidence_consequent_association.png?raw=true)    
+  ![Dashboard Preview](https://github.com/bryantjay/Portfolio/blob/main/Twitter%20Tableau%20Dashboard/images/Screenshot%202025-04-27%20191629.png?raw=true)
 
 ---
 
@@ -47,19 +45,6 @@
 
 ---
 
-## ⚡ Quickies
-
-**Tools**: SQL, R, Tableau  
-**Description**: A collection of smaller, guided, or exploratory projects.
-
-Includes:
-- SQL: Churn calculations, marketing attribution, and funnel analytics.
-- Tableau: Guided dashboard creation and visual analysis.
-- R: TSV to CSV conversion function with cleaning routines.
-- Seattle Labor Spending: Departmental wage and budget analysis (see below for details).
-
----
-
 ## 🔮 R - Predicting Online Shopper Intention
 
 **Tools**: R, Logistic Classification  
@@ -74,15 +59,17 @@ Includes:
 
 ---
 
-## 🐦 Twitter Tableau Dashboard
+## 🥐 Korean Bakery Market Basket Analysis
 
-**Tools**: R, Tableau  
-**Description**: Personal Twitter data dashboard visualizing engagement and posting patterns.
+**Tools**: Python, Jupyter Notebooks  
+**Description**: Association rule mining to identify consumer buying patterns in a Korean bakery.
 
-- Final dashboard available on [Tableau Public](#).
-- Raw data is withheld for privacy; only the dashboard and data-cleaning R script are included.
+**Key Findings**:
+- **Bread with Jam**: Strong rule association between "plain bread" and "jam" reveals intuitive consumer preferences; potential for upselling jam to bread buyers.
+- **Item Bundles & Combos**: Associations among top-selling products (e.g., angbutter and drinks) suggest potential for BOGO and cross-promotional campaigns.
+- **Croissant & "Weiner"**: Unusual association suggests a potential for innovation or marketing a new “pig in a blanket” inspired product.
 
-  ![Dashboard Preview](https://github.com/bryantjay/Portfolio/blob/main/Twitter%20Tableau%20Dashboard/images/Screenshot%202025-04-27%20191629.png?raw=true)
+![Spotting Association Outliers](https://github.com/bryantjay/Portfolio/blob/main/Korean%20Bakery%20Market%20Basket%20Analysis/plots/confidence_consequent_association.png?raw=true)    
 
 ---
 
@@ -107,6 +94,19 @@ Included in both *Quickies* and as standalone files:
 - **SQL - Churn Calculations**: Basic churn metric calculations.
 - **SQL - Marketing Attribution**: Channel contribution analysis.
 - **SQL - Marketing Funnels**: Funnel behavior and conversion tracking.
+
+---
+
+## ⚡ Quickies
+
+**Tools**: SQL, R, Tableau  
+**Description**: A collection of smaller, guided, or exploratory projects.
+
+Includes:
+- SQL: Churn calculations, marketing attribution, and funnel analytics.
+- Tableau: Guided dashboard creation and visual analysis.
+- R: TSV to CSV conversion function with cleaning routines.
+- Seattle Labor Spending: Departmental wage and budget analysis (files and sources).
 
 ---
 
