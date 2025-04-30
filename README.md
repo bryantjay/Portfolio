@@ -13,23 +13,23 @@
 
 ---
 
-👋 **Hello!** I'm a data analyst with a unique background in business administration, music, and applied analytics. I earned a Graduate Certificate in Data Analytics from the University of Washington and hold dual bachelor's degrees from the University of Central Florida.
+Hello! I'm a data analyst with a unique background in business administration, music, and applied analytics. I earned a Graduate Certificate in Data Analytics from the University of Washington and hold dual bachelor's degrees from the University of Central Florida.
 
-Currently, I work with **DataAnnotation** as an independent analyst, where I build and evaluate AI training data, focusing on programming logic in **Python, SQL, R**, and spreadsheets. I also assess model outputs for safety and accuracy.
+Currently, I build and evaluate AI training data as an independent analyst, focusing on programming logic in **Python, SQL, R**, and spreadsheets. I also assess model outputs for safety and accuracy.
 
-My experience spans promotional marketing, nonprofit volunteer work, and customer-facing retail. I bring both technical skills and people-oriented insight to every project—something I aim to showcase in this portfolio.
+My experience spans promotional marketing, nonprofit volunteer work, and customer-facing retail. I bring both technical skills and people-oriented insight to every project.
 
 ---
 
-### 🔧 Technical Toolbox
+### Technical Toolbox
 **Languages & Tools**: Python, R, SQL, Jupyter Notebooks, Tableau, Power BI  
 **Productivity & Web**: Excel, Word, PowerPoint, Outlook, WordPress
 
 ---
 
-## 📁 Projects
+## Projects
 
-### 🐦 Twitter Tableau Dashboard
+### Twitter Tableau Dashboard
 
 **Tools**: R, Tableau  
 **Description**: Personal Twitter data dashboard visualizing engagement and posting patterns.
@@ -41,7 +41,7 @@ My experience spans promotional marketing, nonprofit volunteer work, and custome
 
 ---
 
-### 🏴‍☠️ One Piece Plotly Analysis
+### One Piece Plotly Analysis
 
 **Tools**: Python, Plotly, Jupyter Notebooks  
 **Description**: Visual analysis of episode ratings, arcs, and user engagement for the anime *One Piece*.
@@ -57,7 +57,7 @@ My experience spans promotional marketing, nonprofit volunteer work, and custome
 
 ---
 
-### 🔮 R - Predicting Online Shopper Intention
+### R - Predicting Online Shopper Intention
 
 **Tools**: R, Logistic Classification  
 **Description**: Classification model comparison for predicting e-commerce user purchase intent.
@@ -71,7 +71,7 @@ My experience spans promotional marketing, nonprofit volunteer work, and custome
 
 ---
 
-### 🥐 Korean Bakery Market Basket Analysis
+### Korean Bakery Market Basket Analysis
 
 **Tools**: Python, Jupyter Notebooks  
 **Description**: Association rule mining to identify consumer buying patterns in a Korean bakery.
@@ -85,7 +85,7 @@ My experience spans promotional marketing, nonprofit volunteer work, and custome
 
 ---
 
-### 💼 labor_budgets.ipynb
+### Seattle Labor Spending
 
 **Tools**: Python, Seaborn, Matplotlib  
 **Description**: Visual exploration of labor wages and spending by Seattle public departments.
@@ -99,7 +99,7 @@ My experience spans promotional marketing, nonprofit volunteer work, and custome
 
 ---
 
-### 📊 SQL-Focused Mini Projects
+### SQL-Focused Mini Projects
 
 Included in both *Quickies* and as standalone files:
 
@@ -109,7 +109,7 @@ Included in both *Quickies* and as standalone files:
 
 ---
 
-### ⚡ Quickies
+### Quickies
 
 **Tools**: SQL, R, Tableau  
 **Description**: A collection of smaller, guided, or exploratory projects.
