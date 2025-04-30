@@ -5,10 +5,6 @@
   <p>
     <a href="https://www.linkedin.com/in/bryant-jay/" target="_blank">
       <img src="https://img.shields.io/badge/LinkedIn-Connect-blue?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn Badge">
-    </a>
-        <a href="https://www.instagram.com/scattrbrainjane/" target="_blank">
-      <img src="https://img.shields.io/badge/Instagram-Follow-pink?style=for-the-badge&logo=instagram&logoColor=white" alt="Instagram Badge">
-    </a>
     <a href="https://public.tableau.com/app/profile/bryant.jay/vizzes" target="_blank">
       <img src="https://img.shields.io/badge/Tableau-Portfolio-blue?style=for-the-badge&logo=tableau&logoColor=white" alt="Tableau Badge">
     </a>
@@ -17,7 +13,23 @@
 
 ---
 
-## 🐦 Twitter Tableau Dashboard
+👋 **Hello!** I'm a data analyst with a unique background in business administration, music, and applied analytics. I earned a Graduate Certificate in Data Analytics from the University of Washington and hold dual bachelor's degrees from the University of Central Florida.
+
+Currently, I work with **DataAnnotation** as an independent analyst, where I build and evaluate AI training data, focusing on programming logic in **Python, SQL, R**, and spreadsheets. I also assess model outputs for safety and accuracy.
+
+My experience spans promotional marketing, nonprofit volunteer work, and customer-facing retail. I bring both technical skills and people-oriented insight to every project—something I aim to showcase in this portfolio.
+
+---
+
+### 🔧 Technical Toolbox
+**Languages & Tools**: Python, R, SQL, Jupyter Notebooks, Tableau, Power BI  
+**Productivity & Web**: Excel, Word, PowerPoint, Outlook, WordPress
+
+---
+
+## 📁 Projects
+
+### 🐦 Twitter Tableau Dashboard
 
 **Tools**: R, Tableau  
 **Description**: Personal Twitter data dashboard visualizing engagement and posting patterns.
@@ -29,7 +41,7 @@
 
 ---
 
-## 🏴‍☠️ One Piece Plotly Analysis
+### 🏴‍☠️ One Piece Plotly Analysis
 
 **Tools**: Python, Plotly, Jupyter Notebooks  
 **Description**: Visual analysis of episode ratings, arcs, and user engagement for the anime *One Piece*.
@@ -45,7 +57,7 @@
 
 ---
 
-## 🔮 R - Predicting Online Shopper Intention
+### 🔮 R - Predicting Online Shopper Intention
 
 **Tools**: R, Logistic Classification  
 **Description**: Classification model comparison for predicting e-commerce user purchase intent.
@@ -59,7 +71,7 @@
 
 ---
 
-## 🥐 Korean Bakery Market Basket Analysis
+### 🥐 Korean Bakery Market Basket Analysis
 
 **Tools**: Python, Jupyter Notebooks  
 **Description**: Association rule mining to identify consumer buying patterns in a Korean bakery.
@@ -73,7 +85,7 @@
 
 ---
 
-## 💼 labor_budgets.ipynb
+### 💼 labor_budgets.ipynb
 
 **Tools**: Python, Seaborn, Matplotlib  
 **Description**: Visual exploration of labor wages and spending by Seattle public departments.
@@ -87,7 +99,7 @@
 
 ---
 
-## 📊 SQL-Focused Mini Projects
+### 📊 SQL-Focused Mini Projects
 
 Included in both *Quickies* and as standalone files:
 
@@ -97,7 +109,7 @@ Included in both *Quickies* and as standalone files:
 
 ---
 
-## ⚡ Quickies
+### ⚡ Quickies
 
 **Tools**: SQL, R, Tableau  
 **Description**: A collection of smaller, guided, or exploratory projects.
