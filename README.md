@@ -47,9 +47,12 @@ My experience spans promotional marketing, nonprofit volunteer work, and custome
 **Description**: Visual analysis of episode ratings, arcs, and user engagement for the anime *One Piece*.
 
 **Key Findings**:
-- High ratings for story-rich arcs like *Marineford* and *Wano*, while *Fishman Island* and *Punk Hazard* received lower scores.
-- Canon episodes score about 1 point higher than filler episodes, supporting the trend of fewer filler arcs in newer episodes.
-- Viewer activity peaked early, dipped mid-series, then rose again, especially during major arcs.
+- **Consistent Ratings**: Ratings remain between 7-8/10 across the series, with spikes during major story arcs.
+- **Canon vs. Filler**: Canon episodes tend to have higher ratings and more votes than filler episodes.
+- **Reviewer Engagement**: Earlier arcs (East Blue, Alabasta) see significantly more reviewer activity than later ones.
+- **Saga Trends**: Major arcs like Marineford and Dressrosa receive higher ratings, while arcs like Fishman Island and Punk Hazard are less popular.
+
+Explore the full analysis through interactive visualizations and in-depth charts on the repository.
 
 ![Ratings Timeline of One Piece series, colored by canon and function episodes](https://github.com/bryantjay/Portfolio/blob/main/One%20Piece%20Plotly%20Analysis/visualizations/op_ratings_over_time.png?raw=true)
 
