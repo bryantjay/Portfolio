@@ -58,7 +58,7 @@ My experience spans promotional marketing, nonprofit volunteer work, and custome
 
 Explore the full analysis through interactive visualizations and in-depth charts on the repository.
 
-![Ratings Timeline of One Piece series, colored by canon and function episodes](https://github.com/bryantjay/Portfolio/blob/main/One%20Piece%20Plotly%20Analysis/visualizations/op_ratings_over_time.png?raw=true)
+![Ratings Timeline of One Piece series, colored by canon and function episodes](https://github.com/bryantjay/Portfolio/blob/main/One%20Piece%20Plotly%20Analysis/visualizations/op_ratings_sans_spoilers.png?raw=true)
 
 ![Same visual, with outlier tooltip](https://github.com/bryantjay/Portfolio/blob/main/One%20Piece%20Plotly%20Analysis/visualizations/viz72.png?raw=true)
 
