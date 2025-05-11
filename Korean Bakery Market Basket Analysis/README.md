@@ -66,9 +66,11 @@ Essentially, the greater the number of different products sold, the lower the su
 
 Support can also be applied to combinations of itemsets within the same transaction(s). For itemsets containing only 2 items $X$ and $Y$, support can be written as:
 
-$Support(X \& Y) = \frac{Frequency(X\&Y)}{N}$
+$Support(X \cap Y) = \frac{Frequency(X \cap Y)}{N}$
 
-Where $Frequency(X\&Y)$ are the count of transactions having *both* products $X$ and $Y$, and where $N$ is the total number of transactions. Note that the support between two items of the same itemset remains the same, regardless of whether one is an antecedent or consequent; i.e. $Support(X \rightarrow Y) = Support(Y \rightarrow X)$
+
+
+Where $Frequency(X \cap Y)$ are the count of transactions having *both* products $X$ and $Y$, and where $N$ is the total number of transactions. Note that the support between two items of the same itemset remains the same, regardless of whether one is an antecedent or consequent; i.e. $Support(X \rightarrow Y) = Support(Y \rightarrow X)$
 
 | Itemset                |   Support |
 |:-----------------------|----------:|
@@ -92,7 +94,7 @@ Where $Frequency(X\&Y)$ are the count of transactions having *both* products $X$
 ### Confidence
 **Confidence** measures how often a consequent item is bought, given that an antecedent item has been purchased. $Confidence(X \rightarrow Y)$ is the probability that Item $Y$ will be purchased, given the purchase of Item $X$.
 
-$Confidence(X \rightarrow Y) = \frac{Support(X \& Y)}{Support(X)}$
+$Confidence(X \rightarrow Y) = \frac{Support(X \cap Y)}{Support(X)}$
 
 Confidence is a strong rule to follow, but it is also heavily favorable towards consequent items with high support values. To put it another way, confidence is typically higher for rules where the predicted item(s) is common, regardless of whether or not a strong association exists. This is when context from other metrics becomes helpful.
 
@@ -123,11 +125,11 @@ As baskets incorporate more and more products, the ways to build various anteced
 ### Lift
 **Lift** measures the strength of the association between $X$ and $Y$, compared to when the two items or itemsets are independent. It is calculated as the ratio of the observed support to the expected support if the items were selected independently. In simpler terms, it tells us how much more or less likely two associated items are to be bought together than by chance.
 
-$Lift(X \& Y) = \frac{Support(X \& Y)}{Support(X) \times Support(Y)}$
+$Lift(X \cap Y) = \frac{Support(X \cap Y)}{Support(X) \times Support(Y)}$
 
 \*OR\*
 
-$Lift(X \& Y) = \frac{Observed~Support}{Expected~Support}$
+$Lift(X \cap Y) = \frac{\text{Observed Support}}{\text{Expected Support}}$
 
 The support values in this formula can also be thought of in terms of probability: $P(X)$, $P(Y)$, and  $P(X∩Y)$. The value of lift relative to 1 indicates the degree of association or disassociation( * "disassociation" meaning that purchasing one indicates the other *won't* be purchased).
 - **Lift > 1**: The items are positively associated, meaning the occurrence of one item increases the likelihood of the other item being purchased.
@@ -158,11 +160,11 @@ Lift is not directional, so it does not matter which items in a set represent th
 ### Leverage
 **Leverage** is similar to lift but focuses on the *difference* between the observed and expected support, instead of the ratio between them.
 
-$Leverage(X \& Y) = {Support(X \& Y)} - {Support(X) \times Support(Y)}$
+$Leverage(X \cap Y) = {Support(X \cap Y)} - {Support(X) \times Support(Y)}$
 
 \*OR\*
 
-$Leverage(X \& Y) = {Observed~Support}-{Expected~Support}$
+$Leverage(X \cap Y) = \text{Observed Support} - \text{Expected Support}$
 
 The value of leverage relative to 0 indicates the degree of association or disassociation.
 
@@ -194,9 +196,9 @@ Like lift, leverage is non-directional. Leverage is somewhat more influenced by 
 
 **Conviction** compares the expected and actual frequency of $X$ occurring without $Y$. It shows how likely $X$ happening means that $Y$ won’t happen. A high conviction value means $X$ and $Y$ are closely linked, and that the first event rarely happens without the second event. The formula for conviction is sort of like an inverted version of the lift formula:
 
-$Conviction(X \rightarrow Y) = \frac{Support(X) \times Support(\bar{Y})}{Support(X \& \bar{Y})}$
+$Conviction(X \rightarrow Y) = \frac{Support(X) \times Support(\bar{Y})}{Support(X \cap \bar{Y})}$
 
-Where the $\bar{Y}$ in $Support(\bar{Y})$ and ${Support(X \& \bar{Y})}$ refers to an occurrence of item 𝑌 **not** appearing in a transaction.
+Where the $\bar{Y}$ in $Support(\bar{Y})$ and ${Support(X \cap \bar{Y})}$ refers to an occurrence of item 𝑌 **not** appearing in a transaction.
 
 - **Conviction > 1**: The rule is stronger, meaning the consequent is more likely to appear when the antecedent occurs. The higher the conviction, the stronger the rule.
 - **Conviction = 1**: The rule is not informative—there is no improvement in predicting the consequent given the antecedent.
