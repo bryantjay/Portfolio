@@ -46,7 +46,3 @@ The analysis of *One Piece*'s ratings and viewer activity provides a comprehensi
 - Fluctuations in both ratings and viewer engagement after the time skip, with some sagas like Wano experiencing a surge in popularity.
 
 This analysis serves as a valuable resource for understanding how *One Piece* has evolved both in terms of storytelling and audience engagement over the years.
-
-## How to Use This Repository
-
-1. Clone this repository to your local machine using:
