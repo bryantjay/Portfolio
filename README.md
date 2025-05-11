@@ -29,7 +29,7 @@ My experience spans promotional marketing, nonprofit volunteer work, and custome
 
 ## Projects
 
-### Twitter Tableau Dashboard
+### [Twitter Tableau Dashboard](https://github.com/bryantjay/Portfolio/tree/main/Twitter%20Tableau%20Dashboard)
 
 **Tools**: R, Tableau  
 **Description**: Personal Twitter data dashboard visualizing engagement and posting patterns.
@@ -41,7 +41,7 @@ My experience spans promotional marketing, nonprofit volunteer work, and custome
 
 ---
 
-### One Piece Plotly Analysis
+### [One Piece Plotly Analysis](https://github.com/bryantjay/Portfolio/tree/main/One%20Piece%20Plotly%20Analysis)
 
 **Tools**: Python, Plotly, Jupyter Notebooks  
 **Description**: Visual analysis of episode ratings, arcs, and user engagement for the anime *One Piece*.
@@ -64,7 +64,7 @@ Explore the full analysis through interactive visualizations and in-depth charts
 
 ---
 
-### R - Predicting Online Shopper Intention
+### [R - Predicting Online Shopper Intention](https://github.com/bryantjay/Portfolio/tree/main/R%20-%20Predicting%20Online%20Shopper%20Intention)
 
 **Tools**: R, Logistic Classification  
 **Description**: Classification model comparison for predicting e-commerce user purchase intent.
@@ -78,7 +78,7 @@ Explore the full analysis through interactive visualizations and in-depth charts
 
 ---
 
-### Korean Bakery Market Basket Analysis
+### [Korean Bakery Market Basket Analysis](https://github.com/bryantjay/Portfolio/tree/main/Korean%20Bakery%20Market%20Basket%20Analysis)
 
 **Tools**: Python, Jupyter Notebooks  
 **Description**: Association rule mining to identify consumer buying patterns in a Korean bakery.
@@ -92,7 +92,7 @@ Explore the full analysis through interactive visualizations and in-depth charts
 
 ---
 
-### Seattle Labor Spending
+### [Seattle Labor Spending](https://github.com/bryantjay/Portfolio/tree/main/Quickies/Seattle%20Labor%20Spending%20by%20Department)
 
 **Tools**: Python, Seaborn, Matplotlib  
 **Description**: Visual exploration of labor wages and spending by Seattle public departments.
@@ -116,7 +116,7 @@ Included in both *Quickies* and as standalone files:
 
 ---
 
-### Quickies
+### [Quickies](https://github.com/bryantjay/Portfolio/tree/main/Quickies)
 
 **Tools**: SQL, R, Tableau  
 **Description**: A collection of smaller, guided, or exploratory projects.
