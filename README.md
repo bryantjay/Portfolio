@@ -112,6 +112,3 @@ Includes:
 - Seattle Labor Spending: Departmental wage and budget analysis (additional files and sources are featured here).
 
 ---
-
-Thank you for exploring my portfolio! Feel free to clone, explore, and reach out with any feedback or collaboration ideas.
-
