@@ -30,7 +30,7 @@ Hello! My name is Bryant, and I'm a data analyst with a diverse background. I ea
 **Tools**: R, Tableau  
 **Description**: Personal Twitter data dashboard visualizing engagement and posting patterns.
 
-- Final dashboard available on [Tableau Public](#).
+- Final dashboard available on [Tableau Public](https://public.tableau.com/app/profile/bryant.jay/viz/TwitterDashboard_16986198683330/TwitterDashboard).
 - Raw data is withheld for privacy; only the dashboard and data-cleaning R script are included.
 
   ![Dashboard Preview](https://github.com/bryantjay/Portfolio/blob/main/Twitter%20Tableau%20Dashboard/images/Screenshot%202025-04-27%20191629.png?raw=true)
