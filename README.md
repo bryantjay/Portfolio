@@ -48,7 +48,7 @@ Hello! My name is Bryant, and I'm a data analyst with a diverse background. I ea
 - **Reviewer Engagement**: Earlier arcs (East Blue, Alabasta) see significantly more reviewer activity than later ones.
 - **Saga Trends**: Major arcs like Marineford and Dressrosa receive higher ratings, while arcs like Fishman Island and Punk Hazard are less popular.
 
-Explore the full analysis through [interactive visualizations](https://www.kaggle.com/code/bryantjay/one-piece-plotly-analysis/) and in-depth charts on the repository.
+Explore the full analysis through [interactive visualizations](https://www.kaggle.com/code/bryantjay/one-piece-plotly-analysis/#Visualizations) and in-depth charts on the repository.
 
 ![Ratings Timeline of One Piece series, colored by canon and function episodes](https://github.com/bryantjay/Portfolio/blob/main/One%20Piece%20Plotly%20Analysis/visualizations/op_ratings_sans_spoilers.png?raw=true)
 
@@ -58,7 +58,7 @@ Explore the full analysis through [interactive visualizations](https://www.kaggl
 
 ### [R - Predicting Online Shopper Intention](https://github.com/bryantjay/Portfolio/tree/main/R%20-%20Predicting%20Online%20Shopper%20Intention)
 
-**Tools**: R, `caret` library, Logistic Classification, Decision Trees, Ensemble Methods
+**Tools**: R, `caret` library, Logistic Classification, Decision Trees, Ensemble Methods  
 **Description**: Classification model comparison for predicting e-commerce user purchase intent.
 
 **Key Findings**:
@@ -87,7 +87,7 @@ Explore the full analysis through [interactive visualizations](https://www.kaggl
 
 ### [Seattle Labor Spending](https://github.com/bryantjay/Portfolio/tree/main/Quickies/Seattle%20Labor%20Spending%20by%20Department)
 
-**Tools**: Python, Jupyter Notebooks, `seaborn` and `matplotlib` packages
+**Tools**: Python, Jupyter Notebooks, `seaborn` and `matplotlib` packages  
 **Description**: Visual exploration of labor wages and spending by Seattle public departments.
 
 **Key Findings**:
@@ -102,7 +102,7 @@ Explore the full analysis through [interactive visualizations](https://www.kaggl
 
 ### [Quickies](https://github.com/bryantjay/Portfolio/tree/main/Quickies)
 
-**Tools**: SQL, R, Tableau, and more
+**Tools**: SQL, R, Tableau, and more  
 **Description**: A collection of smaller exploratory projects and guided practice assignments.
 
 Includes:
