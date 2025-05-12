@@ -25,7 +25,7 @@ Hello! My name is Bryant, and I'm a data analyst with a diverse background. I ea
 
 ## Projects
 
-### [Twitter Tableau Dashboard](https://github.com/bryantjay/Portfolio/tree/main/Twitter%20Tableau%20Dashboard)
+### [Tableau: Twitter Analytics Dashboard](https://github.com/bryantjay/Portfolio/tree/main/Twitter%20Tableau%20Dashboard)
 
 **Tools**: R, Tableau  
 **Description**: Personal Twitter data dashboard visualizing engagement and posting patterns.
@@ -37,9 +37,9 @@ Hello! My name is Bryant, and I'm a data analyst with a diverse background. I ea
 
 ---
 
-### [One Piece Plotly Analysis](https://github.com/bryantjay/Portfolio/tree/main/One%20Piece%20Plotly%20Analysis)
+### [Python: Interactive One Piece EDA With Plotly](https://github.com/bryantjay/Portfolio/tree/main/One%20Piece%20Plotly%20Analysis)
 
-**Tools**: Python, `plotly`, `BeautifulSoup`, Jupyter Notebooks  
+**Tools**: Python, visualization using `plotly`, basic web-scraping using `BeautifulSoup`, Jupyter Notebooks  
 **Description**: Visual analysis of episode ratings, arcs, and reviewer engagement for the anime *One Piece*.
 
 **Key Findings**:
@@ -56,7 +56,7 @@ Explore the full analysis through [interactive visualizations](https://www.kaggl
 
 ---
 
-### [R - Predicting Online Shopper Intention](https://github.com/bryantjay/Portfolio/tree/main/R%20-%20Predicting%20Online%20Shopper%20Intention)
+### [R: Predicting Tntent to Purchase Using Machine Learning](https://github.com/bryantjay/Portfolio/tree/main/R%20-%20Predicting%20Online%20Shopper%20Intention)
 
 **Tools**: R, `caret` library, Logistic Classification, Decision Trees, Ensemble Methods  
 **Description**: Classification model comparison for predicting e-commerce user purchase intent.
@@ -71,7 +71,7 @@ Explore the full analysis through [interactive visualizations](https://www.kaggl
 
 ---
 
-### [Korean Bakery Market Basket Analysis](https://github.com/bryantjay/Portfolio/tree/main/Korean%20Bakery%20Market%20Basket%20Analysis)
+### [Python: Market Basket Analysis of Bakery Products](https://github.com/bryantjay/Portfolio/tree/main/Korean%20Bakery%20Market%20Basket%20Analysis)
 
 **Tools**: Python, `mlxtend` package, Apriori Algorithm, Jupyter Notebooks  
 **Description**: Association rule mining to identify complementary and substitute products within a bakery selection.
@@ -85,7 +85,7 @@ Explore the full analysis through [interactive visualizations](https://www.kaggl
 
 ---
 
-### [Seattle Labor Spending](https://github.com/bryantjay/Portfolio/tree/main/Quickies/Seattle%20Labor%20Spending%20by%20Department)
+### [Python: Seattle Labor Spending](https://github.com/bryantjay/Portfolio/tree/main/Quickies/Seattle%20Labor%20Spending%20by%20Department)
 
 **Tools**: Python, Jupyter Notebooks, `seaborn` and `matplotlib` packages  
 **Description**: Visual exploration of labor wages and spending by Seattle public departments.
