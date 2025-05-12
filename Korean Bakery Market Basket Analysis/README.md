@@ -1,16 +1,3 @@
-```python
-import os
-
-# Change the working directory
-os.chdir("/Users/sbrya/Documents/random_data/market_basket_analysis")
-
-cwd = os.getcwd()
-print(cwd)
-```
-
-    c:\Users\sbrya\Documents\random_data\market_basket_analysis
-    
-
 # Market Basket Analysis
 
 ## Introduction to MBA
