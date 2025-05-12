@@ -605,8 +605,7 @@ plt.show()
 ```
 
 
-    
-![png](output_40_0.png)
+![transaction_counts_by_place](https://github.com/bryantjay/Portfolio/tree/main/Korean%20Bakery%20Market%20Basket%20Analysis/plots/transaction_counts_by_place.png?raw=true)
     
 
 
@@ -679,7 +678,7 @@ sales_plot(bakery_data, product_columns)
 
 
     
-![png](output_42_0.png)
+![sales_plot](https://github.com/bryantjay/Portfolio/tree/main/Korean%20Bakery%20Market%20Basket%20Analysis/plots/sales_plot.png?raw=true)
     
 
 
@@ -722,7 +721,7 @@ plt.show()
 
 
     
-![png](output_44_1.png)
+![product_place_pct_hmap](https://github.com/bryantjay/Portfolio/tree/main/Korean%20Bakery%20Market%20Basket%20Analysis/plots/product_place_pct_hmap.png?raw=true)
     
 
 
@@ -763,7 +762,7 @@ plot_heatmap(bakery_data, product_columns)
 
 
     
-![png](output_46_0.png)
+![product_cross_map](https://github.com/bryantjay/Portfolio/tree/main/Korean%20Bakery%20Market%20Basket%20Analysis/plots/product_cross_map.png?raw=true)
     
 
 
@@ -785,7 +784,7 @@ plot_heatmap(bakery_data, sans_angbutter, filename='product_cross_map_sans_angbu
 
 
     
-![png](output_48_0.png)
+![product_cross_map_sans_angbutter](https://github.com/bryantjay/Portfolio/tree/main/Korean%20Bakery%20Market%20Basket%20Analysis/plots/product_cross_map_sans_angbutter.png?raw=true)
     
 
 
@@ -821,16 +820,8 @@ plt.show()
 
 ```
 
-    C:\Users\sbrya\AppData\Local\Temp\ipykernel_82512\1601551751.py:11: FutureWarning: 
     
-    Passing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `x` variable to `hue` and set `legend=False` for the same effect.
-    
-      sns.barplot(x=sales_by_weekday.index, y=sales_by_weekday.values, palette="Blues_d")
-    
-
-
-    
-![png](output_51_1.png)
+![sales_by_weekday](https://github.com/bryantjay/Portfolio/tree/main/Korean%20Bakery%20Market%20Basket%20Analysis/plots/sales_by_weekday.png?raw=true)
     
 
 
@@ -905,7 +896,7 @@ plt.show()
 
 
     
-![png](output_55_0.png)
+![sales_over_time](https://github.com/bryantjay/Portfolio/tree/main/Korean%20Bakery%20Market%20Basket%20Analysis/plots/sales_over_time.png?raw=true)
     
 
 
@@ -1196,37 +1187,37 @@ for col in cols:
 
 
     
-![png](output_70_0.png)
+![support_distribution](https://github.com/bryantjay/Portfolio/tree/main/Korean%20Bakery%20Market%20Basket%20Analysis/plots/support_distribution.png?raw=true)
     
 
 
 
     
-![png](output_70_1.png)
+![confidence_distribution](https://github.com/bryantjay/Portfolio/tree/main/Korean%20Bakery%20Market%20Basket%20Analysis/plots/confidence_distribution.png?raw=true)
     
 
 
 
     
-![png](output_70_2.png)
+![lift_distribution](https://github.com/bryantjay/Portfolio/tree/main/Korean%20Bakery%20Market%20Basket%20Analysis/plots/lift_distribution.png?raw=true)
     
 
 
 
     
-![png](output_70_3.png)
+![leverage_distribution](https://github.com/bryantjay/Portfolio/tree/main/Korean%20Bakery%20Market%20Basket%20Analysis/plots/leverage_distribution.png?raw=true)
     
 
 
 
     
-![png](output_70_4.png)
+![conviction_distribution](https://github.com/bryantjay/Portfolio/tree/main/Korean%20Bakery%20Market%20Basket%20Analysis/plots/conviction_distribution.png?raw=true)
     
 
 
 
     
-![png](output_70_5.png)
+![zhangs_metric_distribution](https://github.com/bryantjay/Portfolio/tree/main/Korean%20Bakery%20Market%20Basket%20Analysis/plots/zhangs_metric_distribution.png?raw=true)
     
 
 
@@ -1264,7 +1255,7 @@ plt.show()
 
 
     
-![png](output_72_0.png)
+![lift_conviction_distributions](https://github.com/bryantjay/Portfolio/tree/main/Korean%20Bakery%20Market%20Basket%20Analysis/plots/lift_conviction_distributions.png?raw=true)
     
 
 
@@ -1324,7 +1315,7 @@ sales_plot(bakery_agg, product_columns, filename="agg_sales_plot.png")
 
 
     
-![png](output_77_0.png)
+![agg_sales_plot](https://github.com/bryantjay/Portfolio/tree/main/Korean%20Bakery%20Market%20Basket%20Analysis/plots/agg_sales_plot.png?raw=true)
     
 
 
@@ -1340,7 +1331,7 @@ plot_heatmap(bakery_agg, product_columns, filename='agg_product_cross_map.png')
 
 
     
-![png](output_79_0.png)
+![agg_product_cross_map](https://github.com/bryantjay/Portfolio/tree/main/Korean%20Bakery%20Market%20Basket%20Analysis/plots/agg_product_cross_map.png?raw=true)
     
 
 
@@ -1508,7 +1499,7 @@ plt.show()
 
 
     
-![png](output_84_0.png)
+![metric_pairplot](https://github.com/bryantjay/Portfolio/tree/main/Korean%20Bakery%20Market%20Basket%20Analysis/plots/metric_pairplot.png?raw=true)
     
 
 
@@ -1558,7 +1549,7 @@ plt.show()
 
 
     
-![png](output_87_0.png)
+![confidence_consequent_association](https://github.com/bryantjay/Portfolio/tree/main/Korean%20Bakery%20Market%20Basket%20Analysis/plots/confidence_consequent_association.png?raw=true)
     
 
 
