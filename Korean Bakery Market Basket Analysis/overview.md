@@ -6,6 +6,8 @@ This project performs a detailed Market Basket Analysis (MBA) on transaction dat
 
 The dataset includes sales data for bakery products such as pastries, bread, cakes, and drinks, with the goal of identifying frequent itemsets and generating association rules to inform business strategies. The analysis also focuses on common item combinations and potential opportunities for product bundling, cross-selling, and upselling.
 
+![sales_plot](https://github.com/bryantjay/Portfolio/blob/main/Korean%20Bakery%20Market%20Basket%20Analysis/plots/sales_plot.png?raw=true)
+
 ## Key Findings
 
 - **Bread with Jam**: The strongest and most consistent rule observed is the pairing between "plain bread" and "jam." This rule stands out across **all** metrics—especially in confidence and conviction—suggesting a highly reliable customer pattern. If jam is purchased, there is a high likelihood that plain bread is purchased alongside it. Upselling jam to bread buyers could be a particularly effective strategy, and bundling both items as a combo could boost joint sales.
