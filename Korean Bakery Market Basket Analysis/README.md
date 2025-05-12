@@ -1505,7 +1505,7 @@ As a reminder, confidence is highly related to and influenced by the *consequent
 
 ```python
 # Create a scatter plot using Seaborn
-plt.figure(figsize=(8, 6))
+plt.figure(figsize=(8, 4))
 sns.scatterplot(x='consequent support', y='confidence', data=rules, color='b', edgecolor='k', s=100, alpha=0.7)
 
 # Annotation parameters
