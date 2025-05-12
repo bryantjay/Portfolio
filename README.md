@@ -12,7 +12,7 @@
 </div>
 
 ---
-
+ 
 Hello! My name is Bryant, and I'm a data analyst with a diverse background. I earned a Graduate Certificate in Data Analytics from the University of Washington and hold dual bachelor's degrees in both Business Administration and Music from the University of Central Florida. My experience spans promotional marketing, nonprofit volunteer work, and customer-facing retail. I try to bring both technical skills and people-oriented insights to every project. Currently, I build and evaluate AI training data as an independent analyst, focusing on programming logic in Python, SQL, R, and spreadsheets.
 
 ---
