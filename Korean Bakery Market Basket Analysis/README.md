@@ -713,11 +713,7 @@ plt.savefig('product_place_pct_hmap.png', dpi=300, bbox_inches='tight')
 
 # Show plot
 plt.show()
-```
-
-    C:\Users\sbrya\AppData\Local\Temp\ipykernel_82512\2460983578.py:11: FutureWarning: DataFrame.applymap has been deprecated. Use DataFrame.map instead.
-      annot = product_place_data_percentage.round(2).applymap(lambda x: f"{x:.1f}%")
-    
+``` 
 
 
     
@@ -995,9 +991,7 @@ print(frequent_itemsets.head())
     4  0.281568    (croissant)
     
 
-    c:\Users\sbrya\anaconda3\Lib\site-packages\mlxtend\frequent_patterns\fpcommon.py:161: DeprecationWarning: DataFrames with non-bool types result in worse computationalperformance and their support might be discontinued in the future.Please use a DataFrame with bool type
-      warnings.warn(
-    
+
 
 #### Association Rules
 
@@ -1463,11 +1457,7 @@ for col in cols:
     
     [88 rows x 3 columns] 
     
-    
 
-    c:\Users\sbrya\anaconda3\Lib\site-packages\mlxtend\frequent_patterns\fpcommon.py:161: DeprecationWarning: DataFrames with non-bool types result in worse computationalperformance and their support might be discontinued in the future.Please use a DataFrame with bool type
-      warnings.warn(
-    
 
 We'll go through each of the metrics in closer detail, but first, I want to bring attention to some of the relationships between various market basket metrics. Similar to how confusion matrix metrics work in tandem to paint a complete picture of model performance, MBA metrics also provide fuller context to various rules by placing importance on different attributes. There can be some interesting interactions between the MBA metrics because of this. Here's a pairplot of rules comparing how different market basket metrics correlate, with the extreme rules for bread and jam removed for visual clarity:
 
