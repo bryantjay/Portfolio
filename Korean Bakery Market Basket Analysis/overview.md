@@ -8,11 +8,15 @@ The dataset includes sales data for bakery products such as pastries, bread, cak
 
 ## Key Findings
 
-- **Bread with Jam**: The combination of "plain bread" and "jam" shows significant association across multiple metrics, suggesting a strong and intuitive pairing. Upselling jam to bread buyers could be an effective marketing strategy.
-  
-- **Item Bundles/Combos**: Popular items like angbutter pastries, croissants, and cakes often appear together. Marketing campaigns could leverage these common pairings through BOGO bundling or food-and-drink combos to boost sales.
+- **Bread with Jam**: The strongest and most consistent rule observed is the pairing between "plain bread" and "jam." This rule stands out across **all** metrics—especially in confidence and conviction—suggesting a highly reliable customer pattern. If jam is purchased, there is a high likelihood that plain bread is purchased alongside it. Upselling jam to bread buyers could be a particularly effective strategy, and bundling both items as a combo could boost joint sales.
 
-- **Pig in a Blanket**: The "wiener" and "croissant" pairing emerged as an interesting association, warranting further investigation. This could lead to a new top-selling item or an enhanced version of an existing one.
+- **Item Bundles/Combos**: Frequent combinations of popular items like angbutter pastries, croissants, cakes, and drinks suggest clear opportunities for product bundling. For example, pairing angbutter with a coffee or tea could form a high-performing combo meal. Additionally, BOGO offers and cross-promotions between popular food categories could be used to drive multi-item purchases and reduce potential spoilage around scheduled weekly closures.
+
+- **Pig in a Blanket?**: A recurring association between "wieners" and "croissants" emerged throughout the analysis. While the specific reason for this pattern is unknown, it could reflect customers recreating familiar items like pigs in a blanket or seeking a balanced savory-sweet combination. This finding suggests a potential product innovation or marketing opportunity worth further investigation.
+
+- **Support vs. Confidence Insight**: A key insight from this project is that high confidence alone can be misleading. A rule’s confidence is often highly correlated with the consequent’s standalone support—meaning popular items like angbutter and croissants frequently appear as consequents in high-confidence rules, regardless of how meaningful the relationship is. This is visualized clearly in a scatterplot showing the near-linear relationship between confidence and consequent support. To mitigate this, additional metrics like lift or conviction are used to validate rules that may appear strong by confidence alone.
+
+![confidence_consequent_association](https://github.com/bryantjay/Portfolio/blob/main/Korean%20Bakery%20Market%20Basket%20Analysis/plots/confidence_consequent_association.png?raw=true)
 
 ## Methodology
 
@@ -25,7 +29,7 @@ The data is preprocessed through:
 
 ## Conclusion
 
-The insights gained from this MBA can help bakery owners and managers optimize their product offerings, design effective promotions, and understand customer preferences. The project demonstrates how Market Basket Analysis can be applied to small retail datasets for actionable business intelligence.
+The insights gained from this MBA help uncover how customers interact with different product categories, revealing valuable information about purchasing behavior. By identifying strong item pairings and high-potential bundle opportunities, bakery owners can better tailor their promotions, optimize inventory, and improve customer experience. This project demonstrates how Market Basket Analysis can offer actionable business intelligence, even for small-scale retail environments.
 
 ## Dependencies
 
