@@ -605,7 +605,7 @@ plt.show()
 ```
 
 
-![transaction_counts_by_place](https://github.com/bryantjay/Portfolio/tree/main/Korean%20Bakery%20Market%20Basket%20Analysis/plots/transaction_counts_by_place.png?raw=true)
+![transaction_counts_by_place](https://github.com/bryantjay/Portfolio/blob/main/Korean%20Bakery%20Market%20Basket%20Analysis/plots/transaction_counts_by_place.png?raw=true)
     
 
 
@@ -678,7 +678,7 @@ sales_plot(bakery_data, product_columns)
 
 
     
-![sales_plot](https://github.com/bryantjay/Portfolio/tree/main/Korean%20Bakery%20Market%20Basket%20Analysis/plots/sales_plot.png?raw=true)
+![sales_plot](https://github.com/bryantjay/Portfolio/blob/main/Korean%20Bakery%20Market%20Basket%20Analysis/plots/sales_plot.png?raw=true)
     
 
 
@@ -721,7 +721,7 @@ plt.show()
 
 
     
-![product_place_pct_hmap](https://github.com/bryantjay/Portfolio/tree/main/Korean%20Bakery%20Market%20Basket%20Analysis/plots/product_place_pct_hmap.png?raw=true)
+![product_place_pct_hmap](https://github.com/bryantjay/Portfolio/blob/main/Korean%20Bakery%20Market%20Basket%20Analysis/plots/product_place_pct_hmap.png?raw=true)
     
 
 
@@ -762,7 +762,7 @@ plot_heatmap(bakery_data, product_columns)
 
 
     
-![product_cross_map](https://github.com/bryantjay/Portfolio/tree/main/Korean%20Bakery%20Market%20Basket%20Analysis/plots/product_cross_map.png?raw=true)
+![product_cross_map](https://github.com/bryantjay/Portfolio/blob/main/Korean%20Bakery%20Market%20Basket%20Analysis/plots/product_cross_map.png?raw=true)
     
 
 
@@ -784,7 +784,7 @@ plot_heatmap(bakery_data, sans_angbutter, filename='product_cross_map_sans_angbu
 
 
     
-![product_cross_map_sans_angbutter](https://github.com/bryantjay/Portfolio/tree/main/Korean%20Bakery%20Market%20Basket%20Analysis/plots/product_cross_map_sans_angbutter.png?raw=true)
+![product_cross_map_sans_angbutter](https://github.com/bryantjay/Portfolio/blob/main/Korean%20Bakery%20Market%20Basket%20Analysis/plots/product_cross_map_sans_angbutter.png?raw=true)
     
 
 
@@ -821,7 +821,7 @@ plt.show()
 ```
 
     
-![sales_by_weekday](https://github.com/bryantjay/Portfolio/tree/main/Korean%20Bakery%20Market%20Basket%20Analysis/plots/sales_by_weekday.png?raw=true)
+![sales_by_weekday](https://github.com/bryantjay/Portfolio/blob/main/Korean%20Bakery%20Market%20Basket%20Analysis/plots/sales_by_weekday.png?raw=true)
     
 
 
@@ -896,7 +896,7 @@ plt.show()
 
 
     
-![sales_over_time](https://github.com/bryantjay/Portfolio/tree/main/Korean%20Bakery%20Market%20Basket%20Analysis/plots/sales_over_time.png?raw=true)
+![sales_over_time](https://github.com/bryantjay/Portfolio/blob/main/Korean%20Bakery%20Market%20Basket%20Analysis/plots/sales_over_time.png?raw=true)
     
 
 
@@ -967,9 +967,6 @@ item_columns = ['angbutter', 'plain bread', 'jam', 'americano', 'croissant', 'ca
 # Convert quantities to one-hot encoded values
 basket = bakery_data[item_columns].applymap(lambda x: 1 if x > 0 else 0)
 ```
-
-    C:\Users\sbrya\AppData\Local\Temp\ipykernel_82512\2581600618.py:8: FutureWarning: DataFrame.applymap has been deprecated. Use DataFrame.map instead.
-      basket = bakery_data[item_columns].applymap(lambda x: 1 if x > 0 else 0)
     
 
 #### Apriori
@@ -1187,37 +1184,37 @@ for col in cols:
 
 
     
-![support_distribution](https://github.com/bryantjay/Portfolio/tree/main/Korean%20Bakery%20Market%20Basket%20Analysis/plots/support_distribution.png?raw=true)
+![support_distribution](https://github.com/bryantjay/Portfolio/blob/main/Korean%20Bakery%20Market%20Basket%20Analysis/plots/support_distribution.png?raw=true)
     
 
 
 
     
-![confidence_distribution](https://github.com/bryantjay/Portfolio/tree/main/Korean%20Bakery%20Market%20Basket%20Analysis/plots/confidence_distribution.png?raw=true)
+![confidence_distribution](https://github.com/bryantjay/Portfolio/blob/main/Korean%20Bakery%20Market%20Basket%20Analysis/plots/confidence_distribution.png?raw=true)
     
 
 
 
     
-![lift_distribution](https://github.com/bryantjay/Portfolio/tree/main/Korean%20Bakery%20Market%20Basket%20Analysis/plots/lift_distribution.png?raw=true)
+![lift_distribution](https://github.com/bryantjay/Portfolio/blob/main/Korean%20Bakery%20Market%20Basket%20Analysis/plots/lift_distribution.png?raw=true)
     
 
 
 
     
-![leverage_distribution](https://github.com/bryantjay/Portfolio/tree/main/Korean%20Bakery%20Market%20Basket%20Analysis/plots/leverage_distribution.png?raw=true)
+![leverage_distribution](https://github.com/bryantjay/Portfolio/blob/main/Korean%20Bakery%20Market%20Basket%20Analysis/plots/leverage_distribution.png?raw=true)
     
 
 
 
     
-![conviction_distribution](https://github.com/bryantjay/Portfolio/tree/main/Korean%20Bakery%20Market%20Basket%20Analysis/plots/conviction_distribution.png?raw=true)
+![conviction_distribution](https://github.com/bryantjay/Portfolio/blob/main/Korean%20Bakery%20Market%20Basket%20Analysis/plots/conviction_distribution.png?raw=true)
     
 
 
 
     
-![zhangs_metric_distribution](https://github.com/bryantjay/Portfolio/tree/main/Korean%20Bakery%20Market%20Basket%20Analysis/plots/zhangs_metric_distribution.png?raw=true)
+![zhangs_metric_distribution](https://github.com/bryantjay/Portfolio/blob/main/Korean%20Bakery%20Market%20Basket%20Analysis/plots/zhangs_metric_distribution.png?raw=true)
     
 
 
@@ -1255,7 +1252,7 @@ plt.show()
 
 
     
-![lift_conviction_distributions](https://github.com/bryantjay/Portfolio/tree/main/Korean%20Bakery%20Market%20Basket%20Analysis/plots/lift_conviction_distributions.png?raw=true)
+![lift_conviction_distributions](https://github.com/bryantjay/Portfolio/blob/main/Korean%20Bakery%20Market%20Basket%20Analysis/plots/lift_conviction_distributions.png?raw=true)
     
 
 
@@ -1315,7 +1312,7 @@ sales_plot(bakery_agg, product_columns, filename="agg_sales_plot.png")
 
 
     
-![agg_sales_plot](https://github.com/bryantjay/Portfolio/tree/main/Korean%20Bakery%20Market%20Basket%20Analysis/plots/agg_sales_plot.png?raw=true)
+![agg_sales_plot](https://github.com/bryantjay/Portfolio/blob/main/Korean%20Bakery%20Market%20Basket%20Analysis/plots/agg_sales_plot.png?raw=true)
     
 
 
@@ -1331,7 +1328,7 @@ plot_heatmap(bakery_agg, product_columns, filename='agg_product_cross_map.png')
 
 
     
-![agg_product_cross_map](https://github.com/bryantjay/Portfolio/tree/main/Korean%20Bakery%20Market%20Basket%20Analysis/plots/agg_product_cross_map.png?raw=true)
+![agg_product_cross_map](https://github.com/bryantjay/Portfolio/blob/main/Korean%20Bakery%20Market%20Basket%20Analysis/plots/agg_product_cross_map.png?raw=true)
     
 
 
@@ -1499,7 +1496,7 @@ plt.show()
 
 
     
-![metric_pairplot](https://github.com/bryantjay/Portfolio/tree/main/Korean%20Bakery%20Market%20Basket%20Analysis/plots/metric_pairplot.png?raw=true)
+![metric_pairplot](https://github.com/bryantjay/Portfolio/blob/main/Korean%20Bakery%20Market%20Basket%20Analysis/plots/metric_pairplot.png?raw=true)
     
 
 
@@ -1549,7 +1546,7 @@ plt.show()
 
 
     
-![confidence_consequent_association](https://github.com/bryantjay/Portfolio/tree/main/Korean%20Bakery%20Market%20Basket%20Analysis/plots/confidence_consequent_association.png?raw=true)
+![confidence_consequent_association](https://github.com/bryantjay/Portfolio/blob/main/Korean%20Bakery%20Market%20Basket%20Analysis/plots/confidence_consequent_association.png?raw=true)
     
 
 
