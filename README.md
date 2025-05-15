@@ -56,7 +56,7 @@ Explore the full analysis through [interactive visualizations](https://www.kaggl
 
 ---
 
-### [R: Predicting Tntent to Purchase Using Machine Learning](https://github.com/bryantjay/Portfolio/tree/main/R%20-%20Predicting%20Online%20Shopper%20Intention)
+### [R: Predicting Intent to Purchase Using Machine Learning](https://github.com/bryantjay/Portfolio/tree/main/R%20-%20Predicting%20Online%20Shopper%20Intention)
 
 **Tools**: R, `caret` library, Logistic Classification, Decision Trees, Ensemble Methods  
 **Description**: Classification model comparison for predicting e-commerce user purchase intent.
